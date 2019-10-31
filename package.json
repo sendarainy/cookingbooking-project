@@ -1,0 +1,20 @@
+{
+  "name": "elbrus-project-final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scriptMap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johny-S/elbrus-project-final.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Johny-S/elbrus-project-final/issues"
+  },
+  "homepage": "https://github.com/Johny-S/elbrus-project-final#readme"
+}
