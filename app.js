@@ -5,9 +5,7 @@ const logger = require('morgan');
 const path = require('path');
 const { connect } = require('mongoose');
 
-const indexRouter = require('./routes/index');
-const loginRouter = require('./routes/login');
-const signupRouter = require('./routes/signup');
+const authRouter = require('./routes/auth');
 const venuesRouter = require('./routes/venues');
 
 const app = express();
@@ -16,17 +14,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 // db
 const uri = 'mongodb+srv://dbUser:xpxA7Dwo4S53xNJo@elbrusbot-i8nza.mongodb.net/CookingBooking?retryWrites=true&w=majority';
 connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', indexRouter);
-app.use('/api/login', loginRouter);
-app.use('/api/signup', signupRouter);
+app.use('/api/auth', authRouter);
 app.use('/api/venues', venuesRouter);
 
 // catch 404 and forward to error handler
