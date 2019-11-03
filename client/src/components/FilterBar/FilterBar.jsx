@@ -7,7 +7,8 @@ export default class FilterBar extends Component {
     super()
     this.state = {
       date: '',
-      time: ''
+      time: '',
+      price: ''
     }
   }
 
@@ -31,8 +32,7 @@ export default class FilterBar extends Component {
         <DatePicker className='date' value='Select Date' 
         options={{
           autoClose: true,
-          format: 'mmmm dd, yyyy',
-          // setDefaultDate: true,
+          format: 'mmmm dd, yyyy'
         }}
         onChange={ (date) => {
           this.setState({
@@ -53,17 +53,25 @@ export default class FilterBar extends Component {
           console.log(this.state)
         }}
         />
-            <Select value="number">
-              <option value="1">
-              1
-              </option>
-              <option value="2">
-              2
-              </option>
-              <option value="3">
-              3
-              </option>
-            </Select>
+
+        <Select name='price' onChange={ (event) => {
+          this.setState({
+            price: event.target.value
+          });
+        }}>
+          <option>
+          Price
+          </option>
+          <option value="1000">
+          До 1000
+          </option>
+          <option value="2000">
+          До 2000
+          </option>
+          <option value="3000">
+          До 3000
+          </option>
+        </Select>
         <Button className='button'>Search</Button>
       </div>
     )
