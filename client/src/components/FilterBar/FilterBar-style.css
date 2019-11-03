@@ -1,0 +1,46 @@
+.filterBar {
+  /* margin: 10px; */
+  display: flex;
+}
+
+.button {
+  margin-top: 14px;
+  margin-left: 10px;
+  border-radius: 10px;
+  height: 35px;
+}
+
+.date {
+  /* margin-top: 10px; */
+  margin-left: 10px;
+  width:150px;
+  height: 35px;
+  border-radius: 10px;
+  background: white;
+}
+
+.datepicker-date-display {
+  background-color: gray;
+}
+.datepicker-done {
+  color: gray;
+}
+.datepicker-cancel {
+  color: gray;
+}
+.timepicker-close {
+  color: gray;
+}
+/* .timepicker-tick {
+  
+} */
+
+.timepicker-digital-display {
+  background-color: gray;
+}
+.input-field {
+  text-align: center;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
