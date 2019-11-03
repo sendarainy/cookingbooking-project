@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Home from './components/pages/Home'
 import Login from './components/pages/Login'
+import FilterBar from './components/FilterBar/FilterBar'
 
 
 
@@ -18,6 +19,7 @@ function App() {
           <NavItem href='/'>Home</NavItem>
           <NavItem href='/login'>Login</NavItem>
         </Navbar>
+        <FilterBar />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/login' component={Login} />
