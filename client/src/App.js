@@ -27,7 +27,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route exact path='/venues/new' component={AddVenue} />
         </Switch>
-        <Route exact path='/' component={Map} />
+        {/* <Route exact path='/' component={Map} /> */}
       </Router>
     </Provider>
   );

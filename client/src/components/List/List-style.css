@@ -1,9 +1,9 @@
 .venue {
   display: flex;
-  border: solid 1px;
+  border-bottom: 1px solid #9e9e9e;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  width: 45%;
+  width: 48%;
   height: 90px;
   margin: 10px;
 }
