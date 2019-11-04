@@ -8,6 +8,7 @@ import store from './store'
 import Home from './components/pages/Home'
 import Login from './components/pages/Login'
 import FilterBar from './components/FilterBar/FilterBar'
+import List from './components/List/List'
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/' exact component={Home} />
           <Route path='/login' component={Login} />
         </Switch>
+        <List />
       </Router>
     </Provider>
   );

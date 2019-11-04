@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './FilterBar-style.css'
-import { Button, TimePicker, Select, DatePicker, Range } from 'react-materialize'
+import { Button, TimePicker, Select, DatePicker } from 'react-materialize'
 
 export default class FilterBar extends Component {
   constructor() {
