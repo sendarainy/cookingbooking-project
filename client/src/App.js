@@ -9,6 +9,7 @@ import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Map from './components/Map/Map';
 import AddVenue from './components/AddVenue/AddVenue';
+import FilterBar from './components/FilterBar/FilterBar';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <NavItem href='/login'>Login</NavItem>
           <NavItem href='/venues/new'>Добавить студию</NavItem>
         </Navbar>
+        <FilterBar />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/login' component={Login} />
