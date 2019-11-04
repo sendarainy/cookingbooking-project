@@ -34,22 +34,22 @@
     // to the base of the flagpole.
 
     function initMap() {
-      const opions = {
+      const options = {
         zoom: 10,
         center: { lat: 55.666810, lng: 37.750974 }
       };
 
-      const map = new google.maps.Map(document.getElementById('map'), opions);
+      const map = new google.maps.Map(document.getElementById('map'), options);
 
-      setMarkers(map);
+      // setMarkers(map);
     }
 
     function setMarkers(map) {
-      const positions = [{ lat: 55.741126, lng: 37.527752 }]
+      const positions = [{ lat: 55.740977, lng: 37.527911 }]
 
       const marker = new google.maps.Marker({
-        position: pos,
-        map: map,
+        position,
+        map,
         title: 'Deli'
       })
 
