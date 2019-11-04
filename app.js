@@ -21,6 +21,13 @@ app.use(cookieParser());
 const uri = 'mongodb+srv://dbUser:xpxA7Dwo4S53xNJo@elbrusbot-i8nza.mongodb.net/CookingBooking?retryWrites=true&w=majority';
 connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+const corsMiddleware = (req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+}
+
+app.use(corsMiddleware)
 
 app.use(express.static(path.join(__dirname, 'public')));
 
