@@ -13,7 +13,7 @@ class SignupModal extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
+    signup: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired
   };
 

@@ -16,10 +16,13 @@ router.post('/login', async (req, res) => {
   bcrypt.compare(password, user.password, async (err, result) => {
     if (err) throw err;
     if (result) {
-      const token = await jwt.sign({
-        id: user.id
-      }, 'myJwtSecret',
-      { expiresIn: 3600 });
+      const token = await jwt.sign(
+        {
+          id: user.id
+        },
+        'myJwtSecret',
+        { expiresIn: 3600 }
+      );
       return res.json({ user, token });
     }
     return res.json({ msg: 'Password/Email is incorrect' });
