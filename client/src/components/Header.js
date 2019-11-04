@@ -16,6 +16,7 @@ class Header extends Component {
         {!this.props.user && <SignupModal />}
         {this.props.user && <Logout />}
         {this.props.user && <a href={`/users/${this.props.user._id}`}>{this.props.user.email}</a>}
+        <NavItem href='/venues/new'>Добавить студию</NavItem>
       </Navbar>
     )
   }
