@@ -15,6 +15,8 @@ export default class List extends Component {
     const resp = await fetch('http://localhost:5000/api/venues');
     let json = await resp.json();
     this.setState({venues: json})
+    console.log(json);
+    
     
   }
 
@@ -32,7 +34,7 @@ export default class List extends Component {
                   </Link>
                   {venue.adress}
                   <p>
-                    price:
+                    price: 
                   </p>
                 </div>
 

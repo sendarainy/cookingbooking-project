@@ -8,9 +8,19 @@ export default class Home extends Component {
     return (
       <div>
         <FilterBar />
-        <h4 style={{textAlign: "center", marginBottom: '20px',}}>CookingBooking</h4>
-        <Map />
-        <List />
+        <div style={{textAlign: "center", marginBottom: '20px',}}>
+          <h4>CookingBooking</h4>
+          <p>Агрегатор кулинарных студий в москве</p>
+        </div>
+        <div>
+
+        <div>
+          <List />
+        </div>
+        <div>
+          <Map />
+        </div>
+        </div>
       </div>
     );
   }

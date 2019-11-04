@@ -5,6 +5,7 @@ const mapStyles = {
   width: '50%',
   height: '50%',
   marginLeft: 'auto'
+  
 };
 
 // const pou = fetch(

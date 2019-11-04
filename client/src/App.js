@@ -25,6 +25,7 @@ function App() {
           <Route path='/' exact component={Home} />
           <Route path='/login' component={Login} />
           <Route exact path='/venues/new' component={AddVenue} />
+          <Route path='/venues/:id' />
         </Switch>
         {/* <Route exact path='/' component={Map} /> */}
       </Router>
