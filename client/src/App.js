@@ -21,7 +21,6 @@ function App() {
           <NavItem href='/login'>Login</NavItem>
           <NavItem href='/venues/new'>Добавить студию</NavItem>
         </Navbar>
-        <FilterBar />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/login' component={Login} />
