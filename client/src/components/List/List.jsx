@@ -12,7 +12,7 @@ export default class List extends Component {
   }
 
   componentDidMount = async () => {
-    const resp = await fetch('http://localhost:5000/api/venues');
+    const resp = await fetch('api/venues');
     let json = await resp.json();
     this.setState({venues: json})
     
