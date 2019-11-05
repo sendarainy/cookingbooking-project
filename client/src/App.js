@@ -7,9 +7,9 @@ import store from './store'
 import Home from './components/pages/Home'
 import Header from './components/Header'
 import Map from './components/Map/Map';
-import AddVenue from './components/AddVenue/AddVenue';
+import AddVenue from './components/venue/AddVenue'
 import FilterBar from './components/FilterBar/FilterBar';
-import List from './components/List/List'
+
 
 import { loadUser } from './actions/authActions'
 

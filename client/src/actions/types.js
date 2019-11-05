@@ -1,6 +1,7 @@
 // venues actions
 export const GET_VENUES = 'GET_VENUES'
 export const ADD_VENUE = 'ADD_VENUE'
+export const FILTER_VENUES = 'FILTER_VENUES'
 export const DELETE_VENUE = 'DELETE_VENUE'
 export const VENUES_LOADING = 'VENUES_LOADING'
 

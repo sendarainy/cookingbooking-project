@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Map from '../Map/Map'
-import List from '../List/List'
+import ListVenues from '../venue/ListVenues'
 
 export default class Home extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class Home extends Component {
       <div>
         <h4 style={{textAlign: "center", marginBottom: '20px',}}>CookingBooking</h4>
         <Map />
-        <List />
+        <ListVenues />
       </div>
     );
   }
