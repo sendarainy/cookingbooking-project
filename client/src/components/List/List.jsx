@@ -29,7 +29,7 @@ export default class List extends Component {
                     {venue.name}
                     <br />
                   </Link>
-                  {venue.adress}
+                  {venue.address}
                   <p>price:</p>
                 </div>
 

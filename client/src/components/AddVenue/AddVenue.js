@@ -52,7 +52,6 @@ class AddVenue extends Component {
 
   render() {
     console.log(7, this.props);
-
     return (
       <div className='add-venue-main'>
         <Row>

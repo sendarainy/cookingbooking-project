@@ -10,8 +10,10 @@ import Map from './components/Map/Map';
 import AddVenue from './components/AddVenue/AddVenue';
 import FilterBar from './components/FilterBar/FilterBar';
 import List from './components/List/List';
-
+import { connect } from 'react-redux';
 import { loadUser } from './actions/authActions';
+import { getVenuesAC } from './actions/venueActions';
+import WrapMap from './components/Map/MapWrap';
 
 export default class App extends Component {
   componentDidMount() {
@@ -19,7 +21,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Provider store={store} className='App'>
         <Router>
@@ -30,7 +31,7 @@ export default class App extends Component {
             <Route exact path='/venues/new' component={AddVenue} />
             {/* <Route path='/login' component={Login} /> */}
           </Switch>
-          <Route exact path='/' component={Map} />
+          <Route exact path='/' component={WrapMap} />
         </Router>
       </Provider>
     );

@@ -49,13 +49,13 @@ router.post('/new', async (req, res) => {
   // }
 
   const addVenue = async (data, geo) => {
-    const { name, address, phone, email } = data;
+    const { name, address, phone, web } = data;
     const venue = await new Venue({
       name,
       geo,
       address,
       phone,
-      email
+      web
     });
     await venue.save();
   };
@@ -65,6 +65,13 @@ router.post('/new', async (req, res) => {
     const venues = await Venue.find();
     res.json(venues);
   });
+});
+
+router.post('/delete', async (req, res) => {
+  console.log(req.body);
+  await Venue.deleteOne({ _id: req.body.id });
+  const venues = await Venue.find();
+  res.json(venues);
 });
 
 module.exports = router;
