@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Row, Col, TextInput, Card, Button, Icon } from 'react-materialize';
 import image from '../../images/mk.jpg';
 import CardTitle from './CardTitle';
 import './AddVenue.css';
+// import { sendTextAC } from '../redux/actions';
+import {
+  getVenuesAC,
+  requestVenuesSuccessAC
+} from '../../actions/venueActions';
 
 class AddVenue extends Component {
   constructor(props) {
@@ -13,6 +19,9 @@ class AddVenue extends Component {
       phone: '',
       email: ''
     };
+  }
+  componentDidMount() {
+    this.props.getVenues();
   }
 
   onChange = e => {
@@ -42,6 +51,8 @@ class AddVenue extends Component {
   };
 
   render() {
+    console.log(7, this.props);
+
     return (
       <div className='add-venue-main'>
         <Row>
@@ -89,4 +100,23 @@ class AddVenue extends Component {
   }
 }
 
-export default AddVenue;
+function mapStateToProps(state) {
+  return {
+    venues: state.venues,
+    loading: state.loading,
+    error: state.error,
+    msg: state.msg,
+    status: state.status
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getVenues: () => dispatch(getVenuesAC())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddVenue);

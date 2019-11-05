@@ -9,6 +9,10 @@ const venueSchema = new Schema({
     required: true,
     type: String
   },
+  geo: {
+    required: true,
+    type: Object
+  },
   phone: {
     required: true,
     type: String
