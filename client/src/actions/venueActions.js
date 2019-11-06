@@ -30,7 +30,7 @@ export const filterVenues = obj => (dispatch, getState)=> {
     type: FILTER_DATE,
     payload: obj
   })
-}
+} 
 
 // export const getVenuesAC = () => ({ type: GET_VENUES });
 // ???

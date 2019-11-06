@@ -2,24 +2,31 @@ import React, { Component } from 'react'
 import './FilterBar-style.css'
 import { Button, TimePicker, Select, DatePicker } from 'react-materialize'
 import { filterVenues } from '../../actions/venueActions'
+import { filterReservations } from '../../actions/reservationActions'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 class FilterBar extends Component {
   state = {
     date: {
-      date: '',
-      time: ''
+      date: null,
+      time: null
     },
-    hours: '',
-    price: ''
+    parsedDate: null,
+    hours: null,
+    price: null
   }
   static propTypes = {
     filterVenues: PropTypes.func.isRequired
   }
   componentDidUpdate = () => {
+    if (this.state.date.date && this.state.date.time) {
+      this.props.filterReservations(this.state.date.date)
+    }
+
+    // this.props.filterTime(this.state.date.time)
     // const price = +this.state.price
-    
-    this.props.filterVenues({ price })
+    // this.props.filterVenues({ price })
+    // console.log()
   }
   render() {
     return (
@@ -36,7 +43,7 @@ class FilterBar extends Component {
               time: this.state.date.time
             }
           });
-          console.log(this.state)
+          // console.log(this.state)
         }}
         />
 
@@ -51,7 +58,7 @@ class FilterBar extends Component {
               time: time
             }
           });
-          console.log(this.state)
+          // console.log(this.state)
         }}
         />
 
@@ -59,7 +66,7 @@ class FilterBar extends Component {
           this.setState({
             hours: event.target.value
           });
-          console.log(this.state);
+          // console.log(this.state);
         }}>
           <option>Часы</option>
           <option>1</option>
@@ -97,4 +104,4 @@ class FilterBar extends Component {
   }
 }
 
-export default connect(null, { filterVenues })(FilterBar)
+export default connect(null, { filterVenues, filterReservations })(FilterBar)

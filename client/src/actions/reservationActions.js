@@ -20,5 +20,4 @@ export const filterReservations = date => dispatch => {
     type: FILTER_RESERVATIONS,
     payload: date
   })
-  dispatch(filterVenues())
 }
