@@ -11,10 +11,10 @@ export const getVenues = () => async dispatch => {
 } 
 
 // filter venues
-export const filterVenues = (param) => dispatch => {
+export const filterVenues = obj => dispatch => {
   dispatch({
     type: FILTER_VENUES,
-    payload: param
+    payload: obj
   })
 }
 

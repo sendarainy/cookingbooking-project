@@ -1,46 +1,39 @@
 import { 
-  GET_VENUES, 
-  FILTER_VENUES, 
-  ADD_VENUE, 
-  DELETE_VENUE, 
-  VENUES_LOADING, 
-  GET_VENUES_SUCCESS ,
-  CANCEL_FILTER
+  GET_RESERVATIONS,
+  FILTER_RESERVATIONS,
+  ADD_RESERVATION,
+  DELETE_RESERVATION
 } from '../actions/types'
 import { getResults } from '../helpers'
 
 const initialState = {
-  venues: [],
-  filtered: null,
-  loading: false
+  reservations: [],
+  filtered: null
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case FILTER_VENUES:
+    case GET_RESERVATIONS:
+      return {
+        ...state,
+        reservations: action.payload
+      }
+    case FILTER_RESERVATIONS:
       const prevResults = getResults(state)
       const [ key ] = Object.keys(action.payload)
-
       return {
         ...state,
         filtered: prevResults.filter(venue => venue[key] === action.payload[key])
       }
-    case VENUES_LOADING:
+    case ADD_RESERVATION:
       return {
         ...state,
-        loading: true
+        reservations: [...state.reservations, action.payload]
       }
-    case GET_VENUES_SUCCESS:
-    return {
-      ...state,
-      venues: action.venues
-    };
-    case GET_VENUES:
+    case DELETE_RESERVATION:
       return {
         ...state,
-        venues: action.payload,
-        filtered: null,
-        loading: false
+        reservations: state.reservations.filter(reservation => reservation.id !== action.payload.id)
       }
     default:
       return state

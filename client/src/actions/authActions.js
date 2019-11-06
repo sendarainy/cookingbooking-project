@@ -15,7 +15,6 @@ import { returnErrors } from './errorActions'
 export const loadUser = () => async (dispatch, getState) => {
   // user loading
   dispatch({ type: USER_LOADING })
-
   const resp = await axios.get('/api/auth/user', tokenConfig(getState))
   try {
     dispatch({
