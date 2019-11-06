@@ -16,6 +16,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
     case FILTER_VENUES:
+      console.log(123)
       return {
         ...state,
         filtered: state.venues.filter(venue => venue.price <= parseInt(action.payload))
