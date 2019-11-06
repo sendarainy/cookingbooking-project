@@ -18,10 +18,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <Provider store={store} className='App'>
+      <div className='App'>
+
+      <Provider store={store}>
         <Router>
           <Header />
-          <FilterBar />
+          
           <Switch>
             <Route path='/' exact component={Home} />
             <Route exact path='/venues/new' component={AddVenue} />
@@ -29,6 +31,7 @@ export default class App extends Component {
           </Switch>
         </Router>
       </Provider>
+      </div>
     );
   }
 }

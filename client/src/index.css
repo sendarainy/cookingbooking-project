@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -14,11 +13,22 @@ code {
     monospace;
 }
 
-/* .ListMapContainer {
-  color: red;
-  display: flex;
+.App {
+  width: 75%;
+  margin: auto;
 }
 
-.ListMapContainer > div {
-  width: 50%;
-} */
+.listMap {
+  /* display: flex; */
+  /* display: flex !important; */
+}
+
+.MapContainer {
+  /* position: absolute; */
+  /* right: 0px; */
+  /* width: 50% !important; */
+}
+
+.MapContainer > div > div {
+  width: 75% !important;
+}

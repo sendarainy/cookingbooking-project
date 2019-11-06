@@ -7,9 +7,9 @@ import {
 } from '../../actions/venueActions';
 
 const mapStyles = {
-  width: '50%',
-  height: '50%',
-  marginLeft: 'auto'
+  width: '100%',
+  height: '80%',
+  // marginLeft: 'auto',
 };
 
 // const pou = fetch(

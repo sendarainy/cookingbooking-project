@@ -41,7 +41,9 @@ class FilterBar extends Component {
 
         <TimePicker className='date' value='Select Time' 
         options={{
+          twelveHour: false,
           autoClose: true,
+          format: 'hh:mm'
         }}
         onChange={ (time) => {
           this.setState({ ...this.state, 

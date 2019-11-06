@@ -21,9 +21,9 @@ class ListVenues extends Component {
   render() {
     return(
       <Fragment>
-        <ul>
+        <ul className='venueUlContainer'>
           {this.showResults().map((venue) => 
-            <li key={venue._id}>
+            <li key={venue._id} className='liContainer'>
               <div className='venue'>
                 <div className='infoContainer'>
                   <Link to={`/venues/${venue._id}`}>
