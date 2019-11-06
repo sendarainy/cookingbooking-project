@@ -12,9 +12,9 @@ class ListVenues extends Component {
     this.props.getReservations()
   }
   componentDidUpdate = () => {
-    if (this.props.reservations) {
-      this.props.filterVenues(this.props.reservations)
-    }
+  //   if (this.props.reservations) {
+  //     this.props.filterVenues(this.props.reservations)
+  //   }
   }
   dropFilters = () => {
     // TODO

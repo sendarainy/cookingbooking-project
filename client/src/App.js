@@ -24,7 +24,7 @@ export default class App extends Component {
           <FilterBar />
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route exact path='/venues/new' component={AddVenue} />
+            <Route path='/venues/new' component={AddVenue} />
             <Route path='/venues/:id' component={Venue}/>
           </Switch>
         </Router>

@@ -31,7 +31,7 @@ class FilterBar extends Component {
   render() {
     return (
       <div className='filterBar'>
-        <DatePicker className='date' value='Select Date' 
+        <DatePicker className='date' value='Выбрать дату' 
         options={{
           autoClose: true,
           format: 'mmmm dd, yyyy'
@@ -47,7 +47,7 @@ class FilterBar extends Component {
         }}
         />
 
-        <TimePicker className='date' value='Select Time' 
+        <TimePicker className='date' value='Выбрать время' 
         options={{
           autoClose: true,
         }}
@@ -85,7 +85,7 @@ class FilterBar extends Component {
           });
         }}>
           <option>
-          Price
+          Цена
           </option>
           <option value="1000">
           До 1000
@@ -98,7 +98,7 @@ class FilterBar extends Component {
           </option>
         </Select>
 
-        <Button className='button'>Search</Button>
+        <Button className='button'>Поиск</Button>
       </div>
     )
   }

@@ -27,12 +27,15 @@ export default function(state = initialState, action) {
     case FILTER_DATE:
       const reserved = action.payload.map(reserve => reserve.venueId)
       // console.log(reserved)
+      const temp = state.venues.filter(venue => !reserved.includes(venue._id))
       return {
         ...state,
-        filtered: state.venues.forEach((venue, i) => {
-          console.log(i, venue);
-          console.log(i, reserved.includes(venue._id));
-        })
+        filtered: temp
+        // state.venues.map((venue, i) => {
+          // return venue;
+          // console.log(i, venue);
+          // console.log(i, reserved.includes(venue._id));
+        // })
       }
     case VENUES_LOADING:
       return {

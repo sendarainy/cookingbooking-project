@@ -19,13 +19,14 @@ export const getVenues = () => async dispatch => {
 } 
 
 // filter venues
-export const filterVenues = obj => (dispatch, getState)=> {
+export const filterVenues = obj => dispatch => {
   if (obj.price) {
     return dispatch({
       type: FILTER_PRICE,
       payload: obj
     })
   }
+  
   dispatch({
     type: FILTER_DATE,
     payload: obj

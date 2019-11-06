@@ -51,8 +51,8 @@ class LoginModal extends Component {
   render() {
     return (
       <Fragment>
-        <NavItem onClick={this.toggleModal} href='#'>
-          Login
+        <NavItem onClick={this.toggleModal}>
+          Войти
         </NavItem>
         <Modal header='Login' open={this.state.isOpen}>
           <form onSubmit={this.handleSubmit}>
@@ -68,7 +68,7 @@ class LoginModal extends Component {
               password
               onChange={this.handleChange}
             />
-            <Button>Login</Button>
+            <Button>Войти</Button>
           </form>
         </Modal>
       </Fragment>
