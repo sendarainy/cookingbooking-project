@@ -1,4 +1,11 @@
-import { GET_VENUES, FILTER_VENUES, ADD_VENUE, DELETE_VENUE, VENUES_LOADING, GET_VENUES_SUCCESS } from '../actions/types'
+import { 
+  GET_VENUES, 
+  FILTER_VENUES, 
+  ADD_VENUE, 
+  DELETE_VENUE, 
+  VENUES_LOADING, 
+  GET_VENUES_SUCCESS 
+} from '../actions/types'
 
 const initialState = {
   venues: [],
