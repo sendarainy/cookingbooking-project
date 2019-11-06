@@ -39,7 +39,7 @@ export default class List extends Component {
                 </div>
 
                 <div className='picContainer'>
-                  <img className='venuePic' src={venue.img} alt="картинка будет здесь"/>
+                  <img className='venueListPic' src={venue.img} alt="картинка будет здесь"/>
                 </div>
 
               </div>

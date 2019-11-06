@@ -10,7 +10,7 @@ import Login from './components/pages/Login';
 import Map from './components/Map/Map';
 import AddVenue from './components/AddVenue/AddVenue';
 import FilterBar from './components/FilterBar/FilterBar';
-import List from './components/List/List'
+import Venue from './components/Venue/Venue'
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route path='/' exact component={Home} />
           <Route path='/login' component={Login} />
           <Route exact path='/venues/new' component={AddVenue} />
-          <Route path='/venues/:id' />
+          <Route path='/venues/:id' component={Venue}/>
         </Switch>
         {/* <Route exact path='/' component={Map} /> */}
       </Router>
