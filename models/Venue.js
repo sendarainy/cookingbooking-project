@@ -1,4 +1,4 @@
-const { Schema, model, connect } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const venueSchema = new Schema({
   name: {
@@ -36,16 +36,11 @@ const venueSchema = new Schema({
   capacity: {
     required: true,
     type: Number
+  },
+  price: {
+    required: true,
+    type: Number
   }
 });
-
-// const User = model('User', userSchema);
-
-const uri =
-  'mongodb+srv://dbUser:xpxA7Dwo4S53xNJo@elbrusbot-i8nza.mongodb.net/CookingBooking?retryWrites=true&w=majority';
-connect(
-  uri,
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
 
 module.exports = model('Venue', venueSchema);

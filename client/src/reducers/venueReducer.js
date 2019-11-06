@@ -1,43 +1,46 @@
-import {
-  GET_VENUES,
-  ADD_VENUE,
-  DELETE_VENUE,
-  VENUES_LOADING,
-  GET_VENUES_SUCCESS
-} from '../actions/types';
+import { 
+  GET_VENUES, 
+  FILTER_VENUES, 
+  ADD_VENUE, 
+  DELETE_VENUE, 
+  VENUES_LOADING, 
+  GET_VENUES_SUCCESS 
+} from '../actions/types'
 
 const initialState = {
-  loading: false,
-  error: false,
-  // name: '',
-  // address: '',
-  // geo: '',
-  // phone: '',
-  // email: ''
-  venues: []
-};
+  venues: [],
+  filtered: null,
+  loading: false
+}
+
+
 
 export default function(state = initialState, action) {
-  console.log(action);
-  switch (action.type) {
-    case ADD_VENUE:
+  switch(action.type) {
+    case FILTER_VENUES:
       return {
-        ...state
-        // isLoading: true
-      };
+        ...state,
+        filtered: state.venues.filter(venue => venue.price <= parseInt(action.payload))
+      }
+    case VENUES_LOADING:
+      return {
+        ...state,
+        loading: true
+      }
+    case GET_VENUES_SUCCESS:
+    return {
+      ...state,
+      venues: action.venues
+    };
     case GET_VENUES:
       return {
         ...state,
-        venues: action.venues,
-        loading: true,
-        error: false
-      };
-    case GET_VENUES_SUCCESS:
-      return {
-        ...state,
-        venues: action.venues
-      };
+        venues: action.payload,
+        filtered: null,
+        loading: false
+      }
     default:
-      return state;
+      return state
   }
 }
+

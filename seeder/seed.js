@@ -1,25 +1,26 @@
-var geocoder = require('google-geocoder');
+const geocoder = require('google-geocoder');
+const { connect } = require('mongoose')
 const Venue = require('../models/Venue');
 
-var geo = geocoder({
+const geo = geocoder({
   key: 'AIzaSyCVqXSmsIDhO-EClFmjLr1Jj9JqlNABzOE'
 });
 
+const uri =
+  'mongodb+srv://dbUser:xpxA7Dwo4S53xNJo@elbrusbot-i8nza.mongodb.net/CookingBooking?retryWrites=true&w=majority';
+connect(
+  uri,
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
 async function createVenue(data) {
   const addVenue = async (data, geo) => {
-    const { name, address, phone, web, img, from, to, capacity } = data;
-    console.log(data);
-    const venue = await new Venue({
-      name,
+    const price = Math.floor(Math.random() * (3000 - 800)) + 800
+    const venue = new Venue({
+      ...data,
       geo,
-      address,
-      phone,
-      web,
-      img,
-      from,
-      to,
-      capacity
-    });
+      price
+    })
     await venue.save();
   };
   await geo.find(data.address, async (err, resGeo) => {

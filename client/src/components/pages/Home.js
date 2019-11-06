@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import Map from '../Map/Map';
-import List from '../List/List';
+import FilterBar from '../FilterBar/FilterBar'
+import ListVenues from '../venue/ListVenues'
+import MapWrap from '../Map/MapWrap';
+
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <h4 style={{ textAlign: 'center', marginBottom: '20px' }}>
-          CookingBooking
-        </h4>
-        {/* <Map /> */}
-        <List />
+        <div style={{textAlign: "center", marginBottom: '20px',}}>
+          <h4>CookingBooking</h4>
+          <p>Агрегатор кулинарных студий в москве</p>
+        </div>
+        <ListVenues />
+        <MapWrap />
       </div>
     );
   }

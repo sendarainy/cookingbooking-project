@@ -6,14 +6,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Home from './components/pages/Home';
 import Header from './components/Header';
-import Map from './components/Map/Map';
-import AddVenue from './components/AddVenue/AddVenue';
+import AddVenue from './components/venue/AddVenue';
 import FilterBar from './components/FilterBar/FilterBar';
-import List from './components/List/List';
-import { connect } from 'react-redux';
+import Venue from './components/venue/Venue'
 import { loadUser } from './actions/authActions';
-import { getVenuesAC } from './actions/venueActions';
-import WrapMap from './components/Map/MapWrap';
 
 export default class App extends Component {
   componentDidMount() {
@@ -29,9 +25,8 @@ export default class App extends Component {
           <Switch>
             <Route path='/' exact component={Home} />
             <Route exact path='/venues/new' component={AddVenue} />
-            {/* <Route path='/login' component={Login} /> */}
+            <Route path='/venues/:id' component={Venue}/>
           </Switch>
-          <Route exact path='/' component={WrapMap} />
         </Router>
       </Provider>
     );
