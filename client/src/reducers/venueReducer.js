@@ -1,4 +1,4 @@
-import { GET_VENUES, FILTER_VENUES, ADD_VENUE, DELETE_VENUE, VENUES_LOADING } from '../actions/types'
+import { GET_VENUES, FILTER_VENUES, ADD_VENUE, DELETE_VENUE, VENUES_LOADING, GET_VENUES_SUCCESS } from '../actions/types'
 
 const initialState = {
   venues: [],
@@ -18,6 +18,11 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       }
+    case GET_VENUES_SUCCESS:
+    return {
+      ...state,
+      venues: action.venues
+    };
     case GET_VENUES:
       return {
         ...state,
@@ -29,3 +34,4 @@ export default function(state = initialState, action) {
       return state
   }
 }
+

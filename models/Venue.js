@@ -9,13 +9,33 @@ const venueSchema = new Schema({
     required: true,
     type: String
   },
+  geo: {
+    required: true,
+    type: Object
+  },
   phone: {
     required: true,
     type: String
   },
-  email: {
+  web: {
     required: true,
     type: String
+  },
+  img: {
+    required: true,
+    type: String
+  },
+  from: {
+    required: true,
+    type: String
+  },
+  to: {
+    required: true,
+    type: String
+  },
+  capacity: {
+    required: true,
+    type: Number
   }
 });
 
