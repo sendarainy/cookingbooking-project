@@ -1,10 +1,17 @@
 // venues actions
-export const GET_VENUES = 'GET_VENUES'
-export const ADD_VENUE = 'ADD_VENUE'
-export const FILTER_VENUES = 'FILTER_VENUES'
-export const DELETE_VENUE = 'DELETE_VENUE'
-export const VENUES_LOADING = 'VENUES_LOADING'
+export const GET_VENUES = 'GET_VENUES';
+export const ADD_VENUE = 'ADD_VENUE';
+export const FILTER_VENUES = 'FILTER_VENUES';
+export const DELETE_VENUE = 'DELETE_VENUE';
+export const VENUES_LOADING = 'VENUES_LOADING';
 export const GET_VENUES_SUCCESS = 'GET_VENUES_SUCCESS';
+export const CANCEL_FILTER = 'CANCEL_FILTER';
+
+// reservation actions
+export const GET_RESERVATIONS = 'GET_RESERVATIONS';
+export const FILTER_RESERVATIONS = 'FILTER_RESERVATIONS';
+export const ADD_RESERVATION = 'ADD_RESERVATION';
+export const DELETE_RESERVATION = 'DELETE_RESERVATION';
 
 // auth actions
 export const USER_LOADING = 'USER_LOADING';
