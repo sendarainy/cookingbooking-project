@@ -6,14 +6,15 @@ import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 class FilterBar extends Component {
   state = {
-    date: '',
-    price: ''
+    date: null,
+    price: null
   }
   static propTypes = {
     filterVenues: PropTypes.func.isRequired
   }
   componentDidUpdate = () => {
-    const price = +this.state.price
+    // const price = +this.state.price
+    
     this.props.filterVenues({ price })
   }
   render() {
