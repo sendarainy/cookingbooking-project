@@ -24,7 +24,6 @@ class FilterBar extends Component {
   render() {
     return (
       <div className='filterBar'>
-
         <DatePicker className='date' value='Select Date' 
         options={{
           autoClose: true,
