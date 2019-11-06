@@ -23,10 +23,10 @@ class ListVenues extends Component {
       <Fragment>
         <ul>
           {this.showResults().map((venue) => 
-            <li key={venue.id}>
+            <li key={venue._id}>
               <div className='venue'>
                 <div className='infoContainer'>
-                  <Link to={`/venues/${venue.id}`}>
+                  <Link to={`/venues/${venue._id}`}>
                     {venue.name}<br/>
                   </Link>
                   {venue.adress}
