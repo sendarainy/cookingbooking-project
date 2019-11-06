@@ -7,6 +7,7 @@ const venues = [
   {
     name: 'venue 1',
     id: '1',
+    price: 800,
     maxWorkers: 4,
     adress: 'Some adress',
     img:
@@ -16,6 +17,7 @@ const venues = [
   {
     name: 'venue 2',
     id: '2',
+    price: 1500,
     maxWorkers: 4,
     adress: 'Some adress',
     img:
@@ -25,6 +27,7 @@ const venues = [
   {
     name: 'venue 3',
     id: '3',
+    price: 2500,
     maxWorkers: 4,
     adress: 'Some adress',
     img:
