@@ -15,7 +15,6 @@ import { returnErrors } from './errorActions'
 export const loadUser = () => async (dispatch, getState) => {
   // user loading
   dispatch({ type: USER_LOADING })
-
   const resp = await axios.get('/api/auth/user', tokenConfig(getState))
   try {
     dispatch({
@@ -60,7 +59,7 @@ export const signup = ({ email, password }) => async dispatch => {
 }
 
 // login
-export const login = ({ email, password }) => async dispatch => {
+export const login = ({ email, password }) => dispatch => {
   // Headers
   const config = {
     headers: {
@@ -70,21 +69,18 @@ export const login = ({ email, password }) => async dispatch => {
 
   // Request body
   const body = JSON.stringify({ email, password });
-
-  const resp = await axios.post('/api/auth/login', body, config)
-  try {
-    dispatch({
+  axios
+    .post('/api/auth/login', body, config)
+    .then(res => dispatch({
       type: LOGIN_SUCCESS,
-      payload: resp.data
-    })
-  } catch (err) {
-    dispatch(
-      returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL')
-    );
-    dispatch({
+      payload: res.data
+    }))
+    .catch (err => {
+      dispatch (returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'))
+      dispatch({
       type: LOGIN_FAIL
-    });
-  }
+     })
+    })
 };
 
 // Logout User

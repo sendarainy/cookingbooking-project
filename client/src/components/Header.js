@@ -3,6 +3,7 @@ import LoginModal from './auth/LoginModal'
 import SignupModal from './auth/SignupModal'
 import Logout from './auth/Logout'
 import { Navbar, NavItem } from 'react-materialize'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 
@@ -10,13 +11,13 @@ class Header extends Component {
   render() {
     return (
       <Navbar>
-        <NavItem href='/'>Home</NavItem>
+        <Link to='/'>На главную</Link>
         {/* <NavItem href='/login'>Login</NavItem> */}
         {!this.props.user && <LoginModal />}
         {!this.props.user && <SignupModal />}
         {this.props.user && <Logout />}
-        {this.props.user && <a href={`/users/${this.props.user._id}`}>{this.props.user.email}</a>}
-        <NavItem href='/venues/new'>Добавить студию</NavItem>
+        {this.props.user && <Link to={`/users/${this.props.user._id}`}>{this.props.user.email}</Link>}
+        {this.props.user && <Link to='/venues/new'>Добавить студию</Link>}
       </Navbar>
     )
   }

@@ -7,9 +7,9 @@ import {
 } from '../../actions/venueActions';
 
 const mapStyles = {
-  width: '50%',
-  height: '50%',
-  marginLeft: 'auto'
+  width: '100%',
+  height: '80%',
+  // marginLeft: 'auto',
 };
 
 // const pou = fetch(
@@ -50,7 +50,7 @@ class MapContainer extends Component {
 
   render() {
     // console.log(store.getState());
-    console.log(this.props.venues);
+    // console.log(this.props.venues);
     return (
       <Map
         google={this.props.google}

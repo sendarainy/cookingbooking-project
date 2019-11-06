@@ -1,11 +1,14 @@
 import { 
   GET_VENUES, 
-  FILTER_VENUES, 
+  FILTER_PRICE,
+  FILTER_DATE, 
   ADD_VENUE, 
   DELETE_VENUE, 
   VENUES_LOADING, 
-  GET_VENUES_SUCCESS 
+  GET_VENUES_SUCCESS ,
+  CANCEL_FILTER
 } from '../actions/types'
+import { getResults } from '../helpers'
 
 const initialState = {
   venues: [],
@@ -13,14 +16,21 @@ const initialState = {
   loading: false
 }
 
-
-
 export default function(state = initialState, action) {
   switch(action.type) {
-    case FILTER_VENUES:
+    case FILTER_PRICE:
+      // const prevResults = getResults(state)
       return {
         ...state,
-        filtered: state.venues.filter(venue => venue.price <= parseInt(action.payload))
+        filtered: state.venues.filter(venue => venue.price <= action.payload.price)
+      }
+    case FILTER_DATE:
+      const reserved = action.payload.map(reserve => reserve.venueId)
+      console.log(reserved)
+      return {
+        ...state,
+        filtered: state.venues.filter(venue => !reserved.includes(venue._id))
+
       }
     case VENUES_LOADING:
       return {

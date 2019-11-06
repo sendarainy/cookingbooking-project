@@ -17,23 +17,23 @@ class SignupModal extends Component {
     clearErrors: PropTypes.func.isRequired
   };
 
-  componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props
-    if (error !== prevProps.error) {
-      // check for registered user
-      if (error.id === 'REGISTER_FAIL') {
-        this.setState({ msg: error.msg.msg })
-      } else {
-        this.setState({ msg: null })
-      }
-    }
-    // close modal if authenticated
-    if (this.state.isOpen) {
-      if (isAuthenticated) {
-        this.toggleModal()
-      }
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { error, isAuthenticated } = this.props
+  //   if (error !== prevProps.error) {
+  //     // check for registered user
+  //     if (error.id === 'REGISTER_FAIL') {
+  //       this.setState({ msg: error.msg.msg })
+  //     } else {
+  //       this.setState({ msg: null })
+  //     }
+  //   }
+  //   // close modal if authenticated
+  //   if (this.state.isOpen) {
+  //     if (isAuthenticated) {
+  //       this.toggleModal()
+  //     }
+  //   }
+  // }
 
   handleChange = (e) => {
     this.setState({
@@ -62,13 +62,13 @@ class SignupModal extends Component {
   render() {
     return (
       <Fragment>
-        <NavItem onClick={this.toggleModal} href='#'>Signup</NavItem>
+        <NavItem onClick={this.toggleModal}>Регистрация</NavItem>
         <Modal header='Register new user' open={this.state.isOpen}>
           <form onSubmit={this.handleSubmit}>
             <TextInput label='Your email' name='email' email onChange={this.handleChange}/>
             <TextInput label='Your password' name='password' password onChange={this.handleChange} />
             <TextInput label='Confirm password' name='confirm' password onChange={this.handleChange} />
-            <Button>Signup</Button>
+            <Button>Регистрация</Button>
             {this.checkPasswords()}
           </form>
         </Modal>
