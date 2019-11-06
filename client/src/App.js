@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Home from './components/pages/Home';
 import Header from './components/Header';
-import AddVenue from './components/AddVenue/AddVenue';
+import AddVenue from './components/venue/AddVenue';
 import FilterBar from './components/FilterBar/FilterBar';
 import { loadUser } from './actions/authActions';
 
