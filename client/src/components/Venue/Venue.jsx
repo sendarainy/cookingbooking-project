@@ -21,7 +21,7 @@ export default class Venue extends Component {
 
     const resp = await fetch('http://localhost:5000/api/venues');
     let json = await resp.json();
-    this.setState({ ...this.state, venue: json[this.state.id] });
+    // this.setState({ ...this.state, venue: json[this.state.id] });
     // console.log(this.state.venue.time)
     // this.state.venue.time.map((hour) => 
     // console.log(hour))
@@ -59,16 +59,15 @@ export default class Venue extends Component {
             <div className='venueDatePicker'>
 
               <DatePicker onChange={ (date) => {
-                this.setState({ date: date })
-                console.log(this.state.date);
-                
+                  this.setState({ date: date })
+                  console.log(this.state.date);
+                }
               }
-              }
-                value='Выберите дату что бы увидеть доступное время'
-                options={{
-                  autoClose: true,
-                  format: 'mmmm dd, yyyy'
-                }} />
+              value='Выберите дату что бы увидеть доступное время'
+              options={{
+                autoClose: true,
+                format: 'mmmm dd, yyyy'
+              }} />
 
               <Modal trigger={<Button className='backButton'>Показать расписание</Button>}>
                 {this.state.venue.time && this.state.venue.time.map((hour, i) =>

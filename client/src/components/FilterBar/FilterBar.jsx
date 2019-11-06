@@ -1,34 +1,25 @@
 import React, { Component } from 'react'
 import './FilterBar-style.css'
 import { Button, TimePicker, Select, DatePicker } from 'react-materialize'
-
-export default class FilterBar extends Component {
-  constructor() {
-    super()
-    this.state = {
-      date: '',
-      time: '',
-      price: ''
-    }
+import { filterVenues } from '../../actions/venueActions'
+import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
+class FilterBar extends Component {
+  state = {
+    date: '',
+    time: '',
+    price: ''
   }
-
-  // componentDidMount = async () => {
-  //   let resp = await fetch('/', {
-  //     headers : { 
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //      }
-  //   })
-  //   let json = await resp.json()
-  //   console.log(json);
-  // }
-
+  static propTypes = {
+    filterVenues: PropTypes.func.isRequired
+  }
+  componentDidUpdate = () => {
+    this.props.filterVenues(this.state.price)
+  }
   render() {
     return (
       <div className='filterBar'>
-
         {/* <Range min="0" max="100" name="points" name='lalala'/> */}
-
         <DatePicker className='date' value='Select Date' 
         options={{
           autoClose: true,
@@ -41,7 +32,6 @@ export default class FilterBar extends Component {
           console.log(this.state)
         }}
         />
-
         <TimePicker className='date' value='Select Time' 
         options={{
           autoClose: true,
@@ -77,3 +67,5 @@ export default class FilterBar extends Component {
     )
   }
 }
+
+export default connect(null, { filterVenues })(FilterBar)
