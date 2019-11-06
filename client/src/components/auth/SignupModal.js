@@ -17,23 +17,23 @@ class SignupModal extends Component {
     clearErrors: PropTypes.func.isRequired
   };
 
-  componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props
-    if (error !== prevProps.error) {
-      // check for registered user
-      if (error.id === 'REGISTER_FAIL') {
-        this.setState({ msg: error.msg.msg })
-      } else {
-        this.setState({ msg: null })
-      }
-    }
-    // close modal if authenticated
-    if (this.state.isOpen) {
-      if (isAuthenticated) {
-        this.toggleModal()
-      }
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { error, isAuthenticated } = this.props
+  //   if (error !== prevProps.error) {
+  //     // check for registered user
+  //     if (error.id === 'REGISTER_FAIL') {
+  //       this.setState({ msg: error.msg.msg })
+  //     } else {
+  //       this.setState({ msg: null })
+  //     }
+  //   }
+  //   // close modal if authenticated
+  //   if (this.state.isOpen) {
+  //     if (isAuthenticated) {
+  //       this.toggleModal()
+  //     }
+  //   }
+  // }
 
   handleChange = (e) => {
     this.setState({

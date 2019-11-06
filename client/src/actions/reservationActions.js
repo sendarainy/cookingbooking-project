@@ -20,6 +20,6 @@ export const filterReservations = date => (dispatch, getState) => {
     type: FILTER_RESERVATIONS,
     payload: date
   })
-  const filteredRes = getState().reservations.filtered
+  const filteredRes = [...getState().reservations.filtered]
   dispatch(filterVenues(filteredRes))
 }

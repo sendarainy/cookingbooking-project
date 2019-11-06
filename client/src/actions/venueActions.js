@@ -26,7 +26,6 @@ export const filterVenues = obj => dispatch => {
       payload: obj
     })
   }
-  
   dispatch({
     type: FILTER_DATE,
     payload: obj
@@ -41,9 +40,7 @@ export const getVenuesSuccessAC = venues => ({
 });
 // ????
 export const getVenuesAC = () => async dispatch => {
-  console.log(8);
   try {
-    console.log(8);
     const resp = await fetch('/api/venues');
     const venues = await resp.json();
     dispatch(getVenuesSuccessAC(venues));
