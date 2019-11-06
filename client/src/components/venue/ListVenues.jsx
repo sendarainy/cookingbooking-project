@@ -11,7 +11,13 @@ class ListVenues extends Component {
     this.props.getVenues()
     this.props.getReservations()
   }
-  
+  componentDidUpdate = () => {
+    const reservations = this.props.reservations
+    if (reservations) {
+      this.props.filterVenues(reservations)
+    }
+    
+  }
   dropFilters = () => {
     // TODO
   }
@@ -49,6 +55,7 @@ class ListVenues extends Component {
 const mapStateToProps = (state) => ({
   venues: state.venues.venues,
   filtered: state.venues.filtered,
-  loading: state.venues.loading
+  loading: state.venues.loading,
+  reservations: state.reservations.filtered
 })
 export default connect(mapStateToProps, { getVenues, filterVenues, getReservations })(ListVenues)

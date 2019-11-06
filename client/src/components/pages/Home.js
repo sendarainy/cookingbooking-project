@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import FilterBar from '../FilterBar/FilterBar'
 import ListVenues from '../venue/ListVenues'
 import MapWrap from '../Map/MapWrap';

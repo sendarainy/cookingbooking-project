@@ -7,14 +7,14 @@ import { PropTypes } from 'prop-types'
 class FilterBar extends Component {
   state = {
     date: '',
-    time: '',
     price: ''
   }
   static propTypes = {
     filterVenues: PropTypes.func.isRequired
   }
   componentDidUpdate = () => {
-    this.props.filterVenues(this.state.price)
+    const price = +this.state.price
+    this.props.filterVenues({ price })
   }
   render() {
     return (

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, TextInput, Card, Button, Icon } from 'react-materialize';
-import image from '../../images/mk.jpg';
 import CardTitle from './CardTitle';
 import './AddVenue.css';
 // import { sendTextAC } from '../redux/actions';

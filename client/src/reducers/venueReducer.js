@@ -1,6 +1,7 @@
 import { 
   GET_VENUES, 
-  FILTER_VENUES, 
+  FILTER_PRICE,
+  FILTER_DATE, 
   ADD_VENUE, 
   DELETE_VENUE, 
   VENUES_LOADING, 
@@ -15,17 +16,18 @@ const initialState = {
   loading: false
 }
 
-
-
 export default function(state = initialState, action) {
   switch(action.type) {
-    case FILTER_VENUES:
-      const prevResults = getResults(state)
-      const [ key ] = Object.keys(action.payload)
-
+    case FILTER_PRICE:
+      // const prevResults = getResults(state)
       return {
         ...state,
-        filtered: prevResults.filter(venue => venue[key] === action.payload[key])
+        filtered: state.venues.filter(venue => venue.price <= action.payload.price)
+      }
+    case FILTER_DATE:
+      return {
+        ...state,
+        filtered: state.venues.filter(venue => venue.id === action.payload.id)
       }
     case VENUES_LOADING:
       return {

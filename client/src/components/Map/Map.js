@@ -50,7 +50,7 @@ class MapContainer extends Component {
 
   render() {
     // console.log(store.getState());
-    console.log(this.props.venues);
+    // console.log(this.props.venues);
     return (
       <Map
         google={this.props.google}
