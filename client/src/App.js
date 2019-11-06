@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Home from './components/pages/Home';
 import Header from './components/Header';
-import AddVenue from './components/venue/AddVenue';
+import AddVenue from './components/Venue/AddVenue';
 import FilterBar from './components/FilterBar/FilterBar';
-import Venue from './components/venue/Venue'
+import Venue from './components/Venue/Venue'
 import { loadUser } from './actions/authActions';
 
 export default class App extends Component {
@@ -26,7 +26,7 @@ export default class App extends Component {
           
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route exact path='/venues/new' component={AddVenue} />
+            <Route path='/venues/new' component={AddVenue} />
             <Route path='/venues/:id' component={Venue}/>
           </Switch>
         </Router>

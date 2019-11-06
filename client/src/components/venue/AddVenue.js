@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, TextInput, Card, Button, Icon } from 'react-materialize';
-import image from '../../images/mk.jpg';
 import CardTitle from './CardTitle';
 import './AddVenue.css';
 // import { sendTextAC } from '../redux/actions';
@@ -10,20 +9,11 @@ import {
   requestVenuesSuccessAC
 } from '../../actions/venueActions';
 
-class AddVenue extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      address: '',
-      phone: '',
-      email: ''
-    };
+export default class AddVenue extends Component {
+  state = {}
+  componentDidMount = () => {
+    
   }
-  componentDidMount() {
-    this.props.getVenues();
-  }
-
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -99,23 +89,23 @@ class AddVenue extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    venues: state.venues,
-    loading: state.loading,
-    error: state.error,
-    msg: state.msg,
-    status: state.status
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     venues: state.venues,
+//     loading: state.loading,
+//     error: state.error,
+//     msg: state.msg,
+//     status: state.status
+//   };
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getVenues: () => dispatch(getVenuesAC())
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     getVenues: () => dispatch(getVenuesAC())
+//   };
+// }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddVenue);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(AddVenue);

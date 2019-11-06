@@ -19,11 +19,13 @@ export default function(state = initialState, action) {
         reservations: action.payload
       }
     case FILTER_RESERVATIONS:
-      const prevResults = getResults(state)
-      const [ key ] = Object.keys(action.payload)
       return {
         ...state,
-        filtered: prevResults.filter(venue => venue[key] === action.payload[key])
+        filtered: state.reservations.filter(res => {
+          return new Date(res.date).toDateString() === action.payload.toDateString()
+          // console.log(action.payload.toDateString())
+          // console.log(new Date(res.date).toDateString())
+        })
       }
     case ADD_RESERVATION:
       return {
