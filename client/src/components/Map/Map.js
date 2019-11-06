@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+// import store from '../../store';
+import {
+  getVenuesAC,
+  requestVenuesSuccessAC
+} from '../../actions/venueActions';
 
 const mapStyles = {
   width: '50%',
@@ -28,14 +33,15 @@ class MapContainer extends Component {
   }
 
   displayMarkers = () => {
-    return this.state.stores.map((store, index) => {
+    // return this.state.stores.map((store, index) => {
+    return this.props.venues.map((store, index) => {
       return (
         <Marker
           key={index}
           id={index}
           position={{
-            lat: store.latitude,
-            lng: store.longitude
+            lat: store.geo.lat,
+            lng: store.geo.lng
           }}
           onClick={() => console.log('You clicked me!')}
         />
@@ -44,6 +50,8 @@ class MapContainer extends Component {
   };
 
   render() {
+    // console.log(store.getState());
+    console.log(this.props.venues);
     return (
       <Map
         google={this.props.google}
@@ -56,6 +64,17 @@ class MapContainer extends Component {
     );
   }
 }
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     getVenues: () => dispatch(getVenuesAC())
+//   };
+// }
+
+// connect(
+//   null,
+//   mapDispatchToProps
+// )(MapContainer);
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyCVqXSmsIDhO-EClFmjLr1Jj9JqlNABzOE'
