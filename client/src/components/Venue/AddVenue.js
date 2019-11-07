@@ -56,17 +56,6 @@ class AddVenue extends Component {
   submit = async e => {
     e.preventDefault();
     this.props.addVenue(this.state);
-    console.log(123, this.state);
-
-    // const resp = await fetch('/api/venues/new', {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(this.state)
-    // });
-    // const venues = await resp.json();
     this.setState({
       name: '',
       address: '',
