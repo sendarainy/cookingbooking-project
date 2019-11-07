@@ -4,6 +4,7 @@ import ListVenues from '../Venue/ListVenues'
 import MapWrap from '../Map/MapWrap';
 
 
+
 export default class Home extends Component {
   render() {
     return (

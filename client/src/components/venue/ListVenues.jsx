@@ -20,6 +20,8 @@ class ListVenues extends Component {
   showResults = () => {
     return this.props.filtered || this.props.venues
   }
+
+  
   render() {
     return(
       <Fragment>
@@ -31,12 +33,17 @@ class ListVenues extends Component {
                   <Link to={`/venues/${venue._id}`}>
                     {venue.name}<br/>
                   </Link>
-                  {venue.adress}
-                  <p>
-                    price: {venue.price}
-                  </p>
+                  <p>телефон: {venue.phone}</p>
+                  <p>адрес: {venue.address}</p>
+                  <p>время работы: <br/>с {venue.from} до {venue.to}</p>
                 </div>
-                <div><BookingModal venueId={venue._id} user={this.props.user}/></div>
+                <div className='priceButtonDiv'>
+                  <div><BookingModal venueId={venue._id} user={this.props.user}/></div>
+                  <div style={{marginTop: '10px'}}>цена: {venue.price} р/час</div>
+                </div>
+                <div className='Schedule'>
+
+                </div>
                 <div className='picContainer'>
                   <img className='venuePic' src={venue.img} alt="картинка будет здесь"/>
                 </div>
