@@ -36,6 +36,7 @@ class BookingModal extends Component {
     return (
       <Fragment>
         <Button floating large 
+        icon={<Icon>add</Icon>}
         onClick={this.toggleModal} 
         className=''
         waves='light'

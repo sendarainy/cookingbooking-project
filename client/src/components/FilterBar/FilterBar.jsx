@@ -93,7 +93,7 @@ class FilterBar extends Component {
           <option value="3000">До 3000</option>
         </Select>
         <div className='checkContainer' style={{ display: 'flex', alignItems: 'center'}}>
-           <div>
+           <div style={{marginLeft: '10px'}}>
              <Checkbox
                className='pastry'
                onChange={this.onChangeOptions}
@@ -102,7 +102,7 @@ class FilterBar extends Component {
                checked={this.state.options.pastry}
              />
            </div>
-           <div>
+           <div style={{marginLeft: '10px'}}>
              <Checkbox
                className='gastro'
                onChange={this.onChangeOptions}
@@ -111,7 +111,7 @@ class FilterBar extends Component {
                checked={this.state.options.gastro}
              />
            </div>
-           <div>
+           <div style={{marginLeft: '10px'}}>
              <Checkbox
                className='cold'
                onChange={this.onChangeOptions}
