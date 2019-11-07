@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginModal from './auth/LoginModal'
 import SignupModal from './auth/SignupModal'
 import Logout from './auth/Logout'
-import { Navbar, NavItem } from 'react-materialize'
+import { Navbar } from 'react-materialize'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -11,7 +11,7 @@ class Header extends Component {
   render() {
     return (
       <Navbar>
-        <Link to='/'>На главную</Link>
+        <Link className='right brand-logo' to='/'>Cooking Booking</Link>
         {/* <NavItem href='/login'>Login</NavItem> */}
         {!this.props.user && <LoginModal />}
         {!this.props.user && <SignupModal />}
