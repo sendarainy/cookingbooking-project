@@ -8,7 +8,7 @@ import {
 
 const mapStyles = {
   width: '100%',
-  height: '80%',
+  height: '500px',
   // marginLeft: 'auto',
 };
 
@@ -42,6 +42,7 @@ class MapContainer extends Component {
             lat: store.geo.lat,
             lng: store.geo.lng
           }}
+          animation={Animation.DROP}
           onClick={() => console.log('You clicked me!')}
         />
       );

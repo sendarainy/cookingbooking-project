@@ -15,17 +15,18 @@ export default class Home extends Component {
           <p>Агрегатор кулинарных студий в москве</p>
         </div>
 
-        <div className='listMap'>
-
-          <div style={{width: '100%', overflow: 'hidden'}}>
+        <div className='ListMap'>
+          
+          <div className='ListContainer'>
             <div style={{height: '500px', width:'100%', 'overflow-y': 'scroll'}}>
               <ListVenues />
             </div>
-            <div className='MapContainer'>
-              <MapWrap />
-            </div>
+          
           </div>
-
+          <div className='MapContainer'>
+            <MapWrap />
+          </div>
+          
         </div>
       </div>
     );
