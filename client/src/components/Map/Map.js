@@ -42,7 +42,6 @@ class MapContainer extends Component {
             lat: store.geo.lat,
             lng: store.geo.lng
           }}
-          animation={Animation.DROP}
           onClick={() => console.log('You clicked me!')}
         />
       );
