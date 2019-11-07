@@ -12,8 +12,8 @@ class FilterBar extends Component {
     },
     options: {
       pastry: false,
-      cold: false,
-      gastro: false
+      gastro: false,
+      cold: false
     },
     parsedDate: null,
     hours: null,
@@ -27,6 +27,8 @@ class FilterBar extends Component {
         [e.target.className]: !this.state.options[e.target.className]
       }
     });
+    console.log(this.state.options)
+    console.log(Object.values(this.state.options))
     const { options } = this.state
     this.props.filterVenues({ options })
 
