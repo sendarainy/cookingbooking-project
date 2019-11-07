@@ -4,21 +4,22 @@
   border-bottom: 1px solid #9e9e9e;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  width: 75%;
+  width: 95%;
   height: 100%;
   margin: 10px;
+  margin-right: 0px;
 }
 
-.liContainer {
+/* .liContainer {
   display: flex;
   justify-content: center;
-}
+} */
 
-.venueUlContainer {
+/* .venueUlContainer {
   width: 100%;
   height: 110px;
   margin: 10px;
-}
+} */
 
 .infoContainer {
   width: 30%;
@@ -33,7 +34,6 @@
   /* margin-bottom: 10px; */
 }
 .venueListPic {
-  /* justify-content: flex-end; */
   height: 100%;
 }
 .priceButtonDiv {

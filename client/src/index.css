@@ -13,22 +13,26 @@ code {
     monospace;
 }
 
-.App {
+/* .App {
   width: 75%;
   margin: auto;
-}
+} */
 
-.listMap {
-  /* display: flex; */
+.ListMap {
+  display: flex;
   /* display: flex !important; */
 }
 
+.ListContainer {
+  width: 50%;
+  height: 80%;
+}
+
 .MapContainer {
-  /* position: absolute; */
-  /* right: 0px; */
-  /* width: 50% !important; */
+  width: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .MapContainer > div > div {
-  width: 75% !important;
+  width: 50% !important;
 }
