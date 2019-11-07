@@ -1,12 +1,13 @@
-import {
+import { 
   GET_VENUES,
-  FILTER_VENUES,
-  ADD_VENUE,
-  DELETE_VENUE,
-  VENUES_LOADING,
-  GET_VENUES_SUCCESS
-} from './types';
-import axios from 'axios';
+  FILTER_PRICE, 
+  FILTER_DATE, 
+  ADD_VENUE, 
+  DELETE_VENUE, 
+  VENUES_LOADING, 
+  GET_VENUES_SUCCESS 
+} from './types'
+import axios from 'axios'
 
 // list venues
 export const getVenues = () => async dispatch => {
@@ -19,11 +20,22 @@ export const getVenues = () => async dispatch => {
 
 // filter venues
 export const filterVenues = obj => dispatch => {
+  if (obj.price) {
+    return dispatch({
+      type: FILTER_PRICE,
+      payload: obj
+    })
+  }
   dispatch({
-    type: FILTER_VENUES,
+    type: FILTER_DATE,
     payload: obj
+<<<<<<< HEAD
   });
 };
+=======
+  })
+} 
+>>>>>>> dev
 
 // add Venue success
 export const getVenuesSuccessAC = venues => ({
@@ -50,9 +62,7 @@ export const addVenueAC = data => async dispatch => {
 
 // ????
 export const getVenuesAC = () => async dispatch => {
-  console.log(8);
   try {
-    console.log(8);
     const resp = await fetch('/api/venues');
     const venues = await resp.json();
     dispatch(getVenuesSuccessAC(venues));

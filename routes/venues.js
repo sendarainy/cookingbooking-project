@@ -31,8 +31,7 @@ router.post('/new', async (req, res) => {
     await venue.save();
   };
   await location.find(req.body.address, async (err, resGeo) => {
-    console.log(req.body.address);
-    const geo = await { ...resGeo[0].location };
+    const geo = { ...resGeo[0].location };
     await addVenue(req.body, geo);
     const venues = await Venue.find();
     res.json(venues);

@@ -1,56 +1,89 @@
 import React, { Component } from 'react'
 import './FilterBar-style.css'
 import { Button, TimePicker, Select, DatePicker } from 'react-materialize'
-import { filterVenues } from '../../actions/venueActions'
+import { filterReservations } from '../../actions/reservationActions'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 class FilterBar extends Component {
   state = {
-    date: '',
-    time: '',
-    price: ''
+    date: {
+      date: null,
+      time: null
+    },
+    parsedDate: null,
+    hours: null,
+    price: null
   }
-  static propTypes = {
-    filterVenues: PropTypes.func.isRequired
+  filterOnDateFilled = () => {
+    console.log('asdasdas')
+    if (this.state.date.date && this.state.date.time) {
+      this.props.filterReservations(this.state.date.date)
+    }
   }
-  componentDidUpdate = () => {
-    this.props.filterVenues(this.state.price)
+  handleChangeDate = (date) => {
+    this.setState({
+      ...this.state,
+      date: {
+        date: date,
+        time: this.state.date.time
+      }
+    })
+    this.filterOnDateFilled()
+  }
+  handleChangeTime = (time) => {
+    console.log(time)
+    this.setState({ 
+      ...this.state, 
+      date: {
+        date: this.state.date.date,
+        time: time
+      }
+    });
+    this.filterOnDateFilled()
   }
   render() {
     return (
       <div className='filterBar'>
-        {/* <Range min="0" max="100" name="points" name='lalala'/> */}
-        <DatePicker className='date' value='Select Date' 
+        <DatePicker className='date' value='Выбрать дату'
         options={{
           autoClose: true,
           format: 'mmmm dd, yyyy'
         }}
-        onChange={ (date) => {
-          this.setState({
-            date: date
-          });
-          console.log(this.state)
-        }}
+        onChange={(date) => this.handleChangeDate(date)}
         />
-        <TimePicker className='date' value='Select Time' 
+        <TimePicker className='date' value='Выбрать время' 
         options={{
+          twelveHour: false,
           autoClose: true,
+          format: 'hh:mm'
         }}
-        onChange={ (time) => {
-          this.setState({
-            time: time
-          });
-          console.log(this.state)
-        }}
+        onChange={(time) => this.handleChangeTime(time)}
         />
 
+        <Select name='hours' onChange={ (event) => {
+          this.setState({
+            hours: event.target.value
+          });
+          // console.log(this.state);
+        }}>
+          <option>Часы</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </Select>
+        
         <Select name='price' onChange={ (event) => {
           this.setState({
             price: event.target.value
           });
         }}>
           <option>
-          Price
+          Цена
           </option>
           <option value="1000">
           До 1000
@@ -62,10 +95,11 @@ class FilterBar extends Component {
           До 3000
           </option>
         </Select>
-        <Button className='button'>Search</Button>
+
+        <Button className='button'>Поиск</Button>
       </div>
     )
   }
 }
 
-export default connect(null, { filterVenues })(FilterBar)
+export default connect(null, { filterReservations })(FilterBar)
