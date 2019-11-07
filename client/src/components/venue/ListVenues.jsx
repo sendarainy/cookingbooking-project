@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import { Card } from 'react-materialize'
 import { getVenues } from '../../actions/venueActions'
 import { getReservations } from '../../actions/reservationActions'
+import { Icon } from 'react-materialize'
 import './ListVenues-style.css'
 import { connect } from 'react-redux';
 import BookingModal from './BookingModal'
@@ -34,10 +35,13 @@ class ListVenues extends Component {
                   <p>телефон: {venue.phone}</p>
                   <p>адрес: {venue.address}</p>
                   <p>время работы: <br/>с {venue.from} до {venue.to}</p>
+                  <a href>{venue.web}</a>
                 </div>
                 <div className='priceButtonDiv'>
+                  <div style={{marginBottom: '10px'}}>Вместимость {venue.capacity} человек</div>
                   <div><BookingModal venueId={venue._id} user={this.props.user}/></div>
                   <div style={{marginTop: '10px'}}>цена: {venue.price} р/час</div>
+                  {/* <Icon>add</Icon> */}
                 </div>
                 <div className='Schedule'>
 
