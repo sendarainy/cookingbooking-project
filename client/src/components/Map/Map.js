@@ -36,6 +36,7 @@ class MapContainer extends Component {
     return this.props.venues.map((store, index) => {
       return (
         <Marker
+          label={store.name}
           key={index}
           id={index}
           position={{
