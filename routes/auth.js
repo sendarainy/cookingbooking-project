@@ -46,13 +46,20 @@ router.post('/signup', async (req, res) => {
     if (err) throw err;
     const user = new User({ email, password: hash });
     await user.save();
-    const token = await jwt.sign({
-      id: user.id
-    }, 'myJwtSecret',
-    { expiresIn: 3600 });
+    const token = await jwt.sign(
+      {
+        id: user.id
+      },
+      'myJwtSecret',
+      { expiresIn: 3600 }
+    );
     return res.json({ user, token });
   });
 });
-
+// all users
+router.get('/users', async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
 
 module.exports = router;

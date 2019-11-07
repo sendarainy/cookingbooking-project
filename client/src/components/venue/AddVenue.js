@@ -7,21 +7,27 @@ import './AddVenue.css';
 // import { sendTextAC } from '../redux/actions';
 import {
   getVenuesAC,
-  requestVenuesSuccessAC
+  requestVenuesSuccessAC,
+  addVenueAC
 } from '../../actions/venueActions';
 
 class AddVenue extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      address: '',
-      phone: '',
-      email: ''
+      name: null,
+      address: null,
+      phone: null,
+      web: null,
+      img: '#',
+      from: null,
+      to: null,
+      capacity: null,
+      price: null
     };
   }
   componentDidMount() {
-    this.props.getVenues();
+    // this.props.getVenues();
   }
 
   onChange = e => {
@@ -32,26 +38,34 @@ class AddVenue extends Component {
 
   submit = async e => {
     e.preventDefault();
-    const resp = await fetch('/api/venues/new', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state)
-    });
-    const tasks = await resp.json();
+    this.props.addVenue(this.state);
+    console.log(123, this.state);
+
+    // const resp = await fetch('/api/venues/new', {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(this.state)
+    // });
+    // const venues = await resp.json();
     this.setState({
-      name: '',
-      address: '',
-      phone: '',
-      email: ''
+      name: null,
+      address: null,
+      phone: null,
+      web: null,
+      img: '#',
+      from: null,
+      to: null,
+      capacity: null,
+      price: null
     });
-    console.log(tasks);
+    console.log(this.state);
   };
 
   render() {
-    console.log(7, this.props);
+    // console.log(7, this.props);
     return (
       <div className='add-venue-main'>
         <Row>
@@ -62,7 +76,7 @@ class AddVenue extends Component {
               header={<CardTitle />}
               actions={[<a href='/'>Назад</a>]}
             >
-              <form action='' id='form' onSubmit={this.onSubmit}>
+              <form action='' id='form' onSubmit={this.submit}>
                 <TextInput
                   name='name'
                   onChange={this.onChange}
@@ -82,10 +96,34 @@ class AddVenue extends Component {
                   value={this.state.phone}
                 />
                 <TextInput
-                  name='email'
+                  name='web'
                   onChange={this.onChange}
-                  label='Email'
-                  value={this.state.email}
+                  label='Web'
+                  value={this.state.web}
+                />
+                <TextInput
+                  name='from'
+                  onChange={this.onChange}
+                  label='from'
+                  value={this.state.from}
+                />
+                <TextInput
+                  name='to'
+                  onChange={this.onChange}
+                  label='to'
+                  value={this.state.to}
+                />
+                <TextInput
+                  name='capacity'
+                  onChange={this.onChange}
+                  label='capacity'
+                  value={this.state.capacity}
+                />
+                <TextInput
+                  name='price'
+                  onChange={this.onChange}
+                  label='price'
+                  value={this.state.price}
                 />
                 <Button type='submit' waves='light' onClick={this.submit}>
                   Создать
@@ -111,7 +149,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getVenues: () => dispatch(getVenuesAC())
+    addVenue: data => dispatch(addVenueAC(data))
   };
 }
 
