@@ -18,6 +18,11 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
+    case CANCEL_FILTER:
+      return {
+        ...state,
+        filtered: null
+      }
     case FILTER_PRICE:
       // const prevResults = getResults(state)
       return {
@@ -26,7 +31,6 @@ export default function(state = initialState, action) {
       }
     case FILTER_DATE:
       const reserved = action.payload.map(reserve => reserve.venueId)
-      console.log(reserved)
       return {
         ...state,
         filtered: state.venues.filter(venue => !reserved.includes(venue._id))

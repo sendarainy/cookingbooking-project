@@ -13,23 +13,14 @@ router.get('/', async (req, res) => {
   res.json(venues);
 });
 router.post('/new', async (req, res) => {
-  const addVenue = async (data, geo) => {
-    const { name, address, phone, web } = data;
-    const venue = new Venue({
-      name,
-      geo,
-      address,
-      phone,
-      web
-    });
-    await venue.save();
-  };
   await location.find(req.body.address, async (err, resGeo) => {
     const geo = { ...resGeo[0].location };
-    await addVenue(req.body, geo);
+    const venue = new Venue({ ...req.body, geo });
+    await venue.save();
     const venues = await Venue.find();
     res.json(venues);
   });
+  // res.json('ok');
 });
 
 router.post('/delete', async (req, res) => {

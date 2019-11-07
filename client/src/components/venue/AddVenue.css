@@ -1,8 +1,18 @@
 .add-venue-main {
   margin-left: 200px;
+  /* background-image: url('../../images/mk.jpg'); */
+  /* background-position: 120px 120px; */
+  /* overflow: auto; */
 }
 
 .add-venue-title {
   text-align: center;
   color: red;
+}
+
+.checkContainer {
+  /* margin-top: 20px; */
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
 }
