@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom';
-// import { Card } from 'react-materialize'
 import { getVenues } from '../../actions/venueActions'
 import { getReservations } from '../../actions/reservationActions'
 import './ListVenues-style.css'

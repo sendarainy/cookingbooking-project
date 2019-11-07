@@ -3,6 +3,7 @@ export const GET_VENUES = 'GET_VENUES';
 export const ADD_VENUE = 'ADD_VENUE';
 export const FILTER_PRICE = 'FILTER_PRICE';
 export const FILTER_DATE = 'FILTER_DATE';
+export const FILTER_OPTIONS = 'FILTER_OPTIONS';
 export const DELETE_VENUE = 'DELETE_VENUE';
 export const VENUES_LOADING = 'VENUES_LOADING';
 export const GET_VENUES_SUCCESS = 'GET_VENUES_SUCCESS';

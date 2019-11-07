@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Modal, Button, Toast } from 'react-materialize'
+import { Modal, Button, Icon } from 'react-materialize'
 import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/themes/material_green.css'
 import axios from 'axios'
@@ -36,7 +36,11 @@ class BookingModal extends Component {
   render() {
     return (
       <Fragment>
-        <Button onClick={this.toggleModal}>Забронировать</Button>
+        <Button floating large 
+        onClick={this.toggleModal} 
+        className=''
+        waves='light'
+        tooltip='Забронировать' />
         <Modal header='Забронировать' open={this.state.isOpen}>
           <form onSubmit={this.handleSubmit}>
             <Flatpickr data-enable-time 

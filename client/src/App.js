@@ -7,7 +7,6 @@ import store from './store';
 import Home from './components/pages/Home';
 import Header from './components/Header';
 import AddVenue from './components/Venue/AddVenue';
-import FilterBar from './components/FilterBar/FilterBar';
 import Venue from './components/Venue/Venue'
 import { loadUser } from './actions/authActions';
 
@@ -19,11 +18,9 @@ export default class App extends Component {
   render() {
     return (
       <div className='App'>
-
       <Provider store={store}>
         <Router>
           <Header />
-          
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/venues/new' component={AddVenue} />

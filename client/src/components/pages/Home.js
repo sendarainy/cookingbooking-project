@@ -8,13 +8,8 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <FilterBar />
-
-        <div style={{textAlign: "center", marginBottom: '20px',}}>
-          <h4>CookingBooking</h4>
-          <p>Агрегатор кулинарных студий в москве</p>
-        </div>
-
+        <FilterBar className='right' />
+  
         <div className='listMap'>
 
           <div style={{width: '100%', overflow: 'hidden'}}>

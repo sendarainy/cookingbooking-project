@@ -2,10 +2,12 @@ import {
   GET_VENUES,
   FILTER_PRICE, 
   FILTER_DATE, 
+  FILTER_OPTIONS,
   ADD_VENUE, 
   DELETE_VENUE, 
   VENUES_LOADING, 
-  GET_VENUES_SUCCESS 
+  GET_VENUES_SUCCESS, 
+  CANCEL_FILTER
 } from './types'
 import axios from 'axios'
 
@@ -26,14 +28,24 @@ export const filterVenues = obj => dispatch => {
       payload: obj
     })
   }
+  if (obj.options) {
+    return dispatch({
+      type: FILTER_OPTIONS,
+      payload: obj
+    })
+  }
   dispatch({
     type: FILTER_DATE,
     payload: obj
   })
 } 
 
-// export const getVenuesAC = () => ({ type: GET_VENUES });
-// ???
+export const cancelFilter = () => dispatch => {
+  dispatch({
+    type: CANCEL_FILTER
+  })
+}
+
 export const getVenuesSuccessAC = venues => ({
   type: GET_VENUES_SUCCESS,
   venues
