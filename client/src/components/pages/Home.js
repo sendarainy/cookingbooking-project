@@ -7,11 +7,9 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        
         <FilterBar />
 
         <div className='ListMap'>
-          
           <div className='ListContainer'>
             <div style={{height: '790px', width:'100%', 'overflow-y': 'scroll'}}>
               <ListVenues />
@@ -20,7 +18,6 @@ export default class Home extends Component {
           <div className='MapContainer'>
             <MapWrap />
           </div>
-          
         </div>
       </div>
     );

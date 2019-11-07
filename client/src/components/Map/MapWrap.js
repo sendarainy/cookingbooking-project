@@ -10,14 +10,20 @@ class MapWrap extends Component {
   componentDidMount() {
     this.props.getVenues();
   }
+
+  showResults = () => {
+    return this.props.filtered || this.props.venues;
+  };
+
   render() {
-    return <Map venues={this.props.venues} />;
+    return <Map venues={this.showResults()} />;
   }
 }
 
 function mapStateToProps(state) {
   return {
-    venues: state.venues.venues
+    venues: state.venues.venues,
+    filtered: state.venues.filtered
   };
 }
 function mapDispatchToProps(dispatch) {
