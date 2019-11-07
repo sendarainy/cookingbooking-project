@@ -35,3 +35,9 @@
   /* justify-content: flex-end; */
   height: 100%;
 }
+
+.priceButtonDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
