@@ -1,13 +1,13 @@
-import { 
+import {
   GET_VENUES,
-  FILTER_PRICE, 
-  FILTER_DATE, 
-  ADD_VENUE, 
-  DELETE_VENUE, 
-  VENUES_LOADING, 
-  GET_VENUES_SUCCESS 
-} from './types'
-import axios from 'axios'
+  FILTER_PRICE,
+  FILTER_DATE,
+  ADD_VENUE,
+  DELETE_VENUE,
+  VENUES_LOADING,
+  GET_VENUES_SUCCESS
+} from './types';
+import axios from 'axios';
 
 // list venues
 export const getVenues = () => async dispatch => {
@@ -24,18 +24,13 @@ export const filterVenues = obj => dispatch => {
     return dispatch({
       type: FILTER_PRICE,
       payload: obj
-    })
+    });
   }
   dispatch({
     type: FILTER_DATE,
     payload: obj
-<<<<<<< HEAD
   });
 };
-=======
-  })
-} 
->>>>>>> dev
 
 // add Venue success
 export const getVenuesSuccessAC = venues => ({

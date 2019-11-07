@@ -4,11 +4,7 @@ import { Row, Col, TextInput, Card, Button, Icon } from 'react-materialize';
 import CardTitle from './CardTitle';
 import './AddVenue.css';
 // import { sendTextAC } from '../redux/actions';
-import {
-  getVenuesAC,
-  requestVenuesSuccessAC,
-  addVenueAC
-} from '../../actions/venueActions';
+import { addVenueAC } from '../../actions/venueActions';
 
 class AddVenue extends Component {
   constructor(props) {
@@ -68,7 +64,7 @@ class AddVenue extends Component {
       <div className='add-venue-main'>
         <Row>
           <h1 className='add-venue-title'>Добавление студии</h1>
-          <Col m={10}>
+          <Col m={10} s={12}>
             <Card
               horizontal
               header={<CardTitle />}
@@ -135,31 +131,23 @@ class AddVenue extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     venues: state.venues,
-//     loading: state.loading,
-//     error: state.error,
-//     msg: state.msg,
-//     status: state.status
-//   };
-// }
+function mapStateToProps(state) {
+  return {
+    venues: state.venues,
+    loading: state.loading,
+    error: state.error,
+    msg: state.msg,
+    status: state.status
+  };
+}
 
-<<<<<<< HEAD
 function mapDispatchToProps(dispatch) {
   return {
     addVenue: data => dispatch(addVenueAC(data))
   };
 }
-=======
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     getVenues: () => dispatch(getVenuesAC())
-//   };
-// }
->>>>>>> dev
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(AddVenue);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddVenue);

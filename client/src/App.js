@@ -6,9 +6,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Home from './components/pages/Home';
 import Header from './components/Header';
-import AddVenue from './components/Venue/AddVenue';
-import FilterBar from './components/FilterBar/FilterBar';
-import Venue from './components/Venue/Venue'
+import AddVenue from './components/venue/AddVenue';
+import AddVenueNew from './components/venue/AddVenueNew';
+// import FilterBar from './components/FilterBar/FilterBar';
+import Venue from './components/venue/Venue';
 import { loadUser } from './actions/authActions';
 
 export default class App extends Component {
@@ -19,18 +20,17 @@ export default class App extends Component {
   render() {
     return (
       <div className='App'>
+        <Provider store={store}>
+          <Router>
+            <Header />
 
-      <Provider store={store}>
-        <Router>
-          <Header />
-          
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/venues/new' component={AddVenue} />
-            <Route path='/venues/:id' component={Venue}/>
-          </Switch>
-        </Router>
-      </Provider>
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/venues/new' component={AddVenueNew} />
+              <Route path='/venues/:id' component={Venue} />
+            </Switch>
+          </Router>
+        </Provider>
       </div>
     );
   }

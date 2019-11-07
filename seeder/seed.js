@@ -1,5 +1,5 @@
 const geocoder = require('google-geocoder');
-const { connect } = require('mongoose')
+const { connect } = require('mongoose');
 const Venue = require('../models/Venue');
 
 const geo = geocoder({
@@ -15,12 +15,12 @@ connect(
 
 async function createVenue(data) {
   const addVenue = async (data, geo) => {
-    const price = Math.floor(Math.random() * (3000 - 800)) + 800
+    const price = Math.floor(Math.random() * (3000 - 800)) + 800;
     const venue = new Venue({
       ...data,
       geo,
       price
-    })
+    });
     await venue.save();
   };
   await geo.find(data.address, async (err, resGeo) => {
@@ -39,7 +39,12 @@ const venues = [
       'https://www.restoclub.ru/uploads/place_thumbnail_big/d/3/7/5/d375af9ad3e90a236bec2a0d5fe09004.jpg',
     from: '12-00',
     to: '20-00',
-    capacity: 8
+    capacity: 8,
+    options: {
+      pastry: true,
+      gastro: false,
+      cold: false
+    }
   },
   {
     name: 'Вкусотеррия',
@@ -48,9 +53,14 @@ const venues = [
     web: 'vkusoterria.ru',
     img:
       'https://www.restoclub.ru/uploads/place_thumbnail_big/7/b/2/e/7b2e3108c47d32663f7e2678e4f0bdb7.jpg',
-    from: 10 - 00,
-    to: 22 - 00,
-    capacity: 20
+    from: '10-00',
+    to: '22-00',
+    capacity: 20,
+    options: {
+      pastry: false,
+      gastro: true,
+      cold: true
+    }
   },
   {
     name: 'Академия дель Густо',
@@ -61,7 +71,12 @@ const venues = [
       'https://www.restoclub.ru/uploads/place_thumbnail_big/5/c/9/b/5c9b664709ab805f162fabcc33694a0f.jpg',
     from: '10-00',
     to: '23-30',
-    capacity: 16
+    capacity: 16,
+    options: {
+      pastry: true,
+      gastro: false,
+      cold: true
+    }
   },
   {
     name: 'Студия Юлии Высоцкой',
@@ -72,7 +87,12 @@ const venues = [
       'https://www.restoclub.ru/uploads/place_thumbnail_big/b/b/c/e/bbcee089237a5e30cdecb291b4d2e060.jpg',
     from: '10-00',
     to: '22-00',
-    capacity: 25
+    capacity: 25,
+    options: {
+      pastry: false,
+      gastro: true,
+      cold: false
+    }
   },
   {
     name: 'Clever',
@@ -83,7 +103,12 @@ const venues = [
       'https://www.loft2rent.ru/upload_data/2017/8689/upldPG1zSO.jpg.749x500.jpg',
     from: '10-00',
     to: '22-00',
-    capacity: 30
+    capacity: 30,
+    options: {
+      pastry: true,
+      gastro: true,
+      cold: false
+    }
   },
   {
     name: 'DELI',
@@ -94,7 +119,12 @@ const venues = [
       'https://www.restoclub.ru/uploads/place_thumbnail_big/f/d/b/c/fdbc770a9afcef93dd2ba44acda81092.jpg',
     from: '10-00',
     to: '22-00',
-    capacity: 26
+    capacity: 26,
+    options: {
+      pastry: false,
+      gastro: false,
+      cold: true
+    }
   },
   {
     name: 'Urban Kitchen',
@@ -105,7 +135,12 @@ const venues = [
       'https://img02.rl0.ru/afisha/o/www.afisha.ru/uploads/images/4/b5/4b515008e43943c48567c0d29e204a3e.jpeg',
     from: '10-00',
     to: '23-00',
-    capacity: 20
+    capacity: 20,
+    options: {
+      pastry: true,
+      gastro: true,
+      cold: false
+    }
   },
   {
     name: 'Гастрономъ',
@@ -116,7 +151,12 @@ const venues = [
       'https://www.restoclub.ru/uploads/place_thumbnail_big/f/b/9/6/fb96a98cd7a1130e758ecf31e8996734.jpg',
     from: '10-00',
     to: '19-00',
-    capacity: 20
+    capacity: 20,
+    options: {
+      pastry: true,
+      gastro: true,
+      cold: true
+    }
   },
   {
     name: 'Хлеб и еда',
@@ -127,7 +167,12 @@ const venues = [
       'https://www.restoclub.ru/uploads/place_thumbnail_big/a/0/1/4/a014ad8488e83c06b84f19de7ec4f6f5.jpg',
     from: '10-00',
     to: '22-00',
-    capacity: 30
+    capacity: 30,
+    options: {
+      pastry: false,
+      gastro: true,
+      cold: false
+    }
   },
   {
     name: 'Донна Маргарита',
@@ -138,8 +183,15 @@ const venues = [
       'https://kudago.com/media/thumbs/xl/images/place/15/68/1568242837d07c10f87163b946306508.jpg',
     from: '10-00',
     to: '22-00',
-    capacity: 24
+    capacity: 24,
+    options: {
+      pastry: true,
+      gastro: true,
+      cold: true
+    }
   }
 ];
+
+// Venue.deleteMany({});
 
 venues.forEach(el => createVenue(el));
