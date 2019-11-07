@@ -40,6 +40,11 @@ const venueSchema = new Schema({
   price: {
     required: true,
     type: Number
+  },
+  options: {
+    pastry: Boolean,
+    gastro: Boolean,
+    cold: Boolean
   }
 });
 

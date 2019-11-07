@@ -8,31 +8,30 @@ class BookingModal extends Component {
   state = {
     date: null,
     isOpen: false
-  }
-  toggleModal = (e) => {
+  };
+  toggleModal = e => {
     if (!this.props.user) {
-      return alert('Пожалуйста, залогиньтесь!')
+      return alert('Пожалуйста, залогиньтесь!');
     }
     this.setState({ isOpen: !this.state.isOpen });
-  }
+  };
   handleSubmit = async e => {
-    e.preventDefault()
+    e.preventDefault();
     const body = {
       userId: this.props.user._id,
-      venueId: this.props.venueId, 
+      venueId: this.props.venueId,
       date: this.state.date
-     }
+    };
     const headers = {
-      "Content-Type": "application/json"
-    }
-    await axios.post('api/reservations/new', body, headers)
-    
-  }
+      'Content-Type': 'application/json'
+    };
+    await axios.post('api/reservations/new', body, headers);
+  };
   handleDateChange = date => {
     this.setState({
-      date:date[0]
-    })
-  }
+      date: date[0]
+    });
+  };
   render() {
     return (
       <Fragment>
@@ -43,14 +42,16 @@ class BookingModal extends Component {
         tooltip='Забронировать' />
         <Modal header='Забронировать' open={this.state.isOpen}>
           <form onSubmit={this.handleSubmit}>
-            <Flatpickr data-enable-time 
+            <Flatpickr
+              data-enable-time
               value={this.state.date}
-              onChange={this.handleDateChange} />
+              onChange={this.handleDateChange}
+            />
             <Button>Забронировать</Button>
           </form>
         </Modal>
       </Fragment>
-    )
+    );
   }
 }
 
