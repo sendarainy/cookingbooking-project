@@ -7,20 +7,19 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        
         <FilterBar />
 
         <div className='ListMap'>
-          
           <div className='ListContainer'>
-            <div style={{height: '800px', width:'100%', 'overflow-y': 'scroll'}}>
+            <div
+              style={{ height: '800px', width: '100%', 'overflow-y': 'scroll' }}
+            >
               <ListVenues />
             </div>
           </div>
           <div className='MapContainer'>
             <MapWrap />
           </div>
-          
         </div>
       </div>
     );
