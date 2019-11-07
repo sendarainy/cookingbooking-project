@@ -12,7 +12,7 @@ export default class Home extends Component {
 
         <div style={{textAlign: "center", marginBottom: '20px',}}>
           <h4>CookingBooking</h4>
-          <p>Агрегатор кулинарных студий в москве</p>
+          <p style={{marginBottom: '10px'}}>Агрегатор кулинарных студий в москве</p>
         </div>
 
         <div className='ListMap'>
