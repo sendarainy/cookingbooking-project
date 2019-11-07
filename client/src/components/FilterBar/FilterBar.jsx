@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './FilterBar-style.css'
-import { Button, TimePicker, Select, DatePicker, Checkbox } from 'react-materialize'
+import { Button, TimePicker, Select, DatePicker, Checkbox, Icon } from 'react-materialize'
 import { filterReservations } from '../../actions/reservationActions'
 import { filterVenues, cancelFilter } from '../../actions/venueActions'
 import { connect } from 'react-redux'
@@ -121,7 +121,7 @@ class FilterBar extends Component {
              />
            </div>
          </div>
-        <Button onClick={this.props.cancelFilter} className='button red' tooltip='Сбросить фильтр'>X</Button>
+        <Button icon={<Icon>close</Icon>}onClick={this.props.cancelFilter} className='button red lighten-2' tooltip='Сбросить фильтр'></Button>
       </div>
     )
   }

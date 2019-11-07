@@ -21,6 +21,7 @@ code {
 .ListMap {
   display: flex;
   /* display: flex !important; */
+  border-top: 1px solid #dfdede;
 }
 
 .ListContainer {
@@ -29,10 +30,12 @@ code {
 }
 
 .MapContainer {
+  /* margin-top: 15px; */
   width: 50%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 7px 0 rgba(0,0,0,0.4);
 }
 
 .MapContainer > div > div {
   width: 50% !important;
+  height: 100% !important;
 }

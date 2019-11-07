@@ -29,7 +29,7 @@ class ListVenues extends Component {
               <div className='venue'>
                 <div className='infoContainer'>
                   <Link to={`/venues/${venue._id}`}>
-                    {venue.name}
+                    <h6>{venue.name}</h6>
                     <br />
                   </Link>
                   <p>телефон: {venue.phone}</p>
@@ -41,7 +41,7 @@ class ListVenues extends Component {
                   <div style={{marginBottom: '10px'}}>Вместимость {venue.capacity} человек</div>
                   <div><BookingModal venueId={venue._id} user={this.props.user}/></div>
                   <div style={{marginTop: '10px'}}>цена: {venue.price} р/час</div>
-                  {/* <Icon>add</Icon> */}
+                  <div>Доступные цеха</div>
                 </div>
                 <div className='picContainer'>
                   <img

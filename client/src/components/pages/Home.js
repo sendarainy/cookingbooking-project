@@ -13,7 +13,7 @@ export default class Home extends Component {
         <div className='ListMap'>
           
           <div className='ListContainer'>
-            <div style={{height: '800px', width:'100%', 'overflow-y': 'scroll'}}>
+            <div style={{height: '790px', width:'100%', 'overflow-y': 'scroll'}}>
               <ListVenues />
             </div>
           </div>
