@@ -13,22 +13,29 @@ code {
     monospace;
 }
 
-.App {
+/* .App {
   width: 75%;
   margin: auto;
+} */
+
+.ListMap {
+  display: flex;
+  /* display: flex !important; */
+  border-top: 1px solid #dfdede;
 }
 
-.listMap {
-  /* display: flex; */
-  /* display: flex !important; */
+.ListContainer {
+  width: 50%;
+  height: 80%;
 }
 
 .MapContainer {
-  /* position: absolute; */
-  /* right: 0px; */
-  /* width: 50% !important; */
+  /* margin-top: 15px; */
+  width: 50%;
+  box-shadow: 0 0 7px 0 rgba(0,0,0,0.4);
 }
 
 .MapContainer > div > div {
-  width: 75% !important;
+  width: 50% !important;
+  height: 100% !important;
 }

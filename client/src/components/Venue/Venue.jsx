@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, DatePicker, Modal } from 'react-materialize'
+import { Button, DatePicker, Modal, Table, Checkbox } from 'react-materialize';
 // import { Card } from 'react-materialize'
-import './Venue-style.css'
+import './Venue-style.css';
 
-export default class Venue extends Component {
+class Venue extends Component {
   constructor(match) {
-    super()
+    super();
     this.state = {
       id: match.match.params.id,
       venue: {
@@ -14,75 +15,142 @@ export default class Venue extends Component {
       },
       date: '',
       availableTime: ''
-    }
+    };
   }
-
-  componentDidMount = async () => {
-
-    const resp = await fetch('http://localhost:5000/api/venues');
-    let json = await resp.json();
-    // this.setState({ ...this.state, venue: json[this.state.id] });
-    // console.log(this.state.venue.time)
-    // this.state.venue.time.map((hour) => 
-    // console.log(hour))
-
-  }
-
-  TimeQuery(e) {
-    console.log(e.target.name);
-  }
-
-
 
   render() {
+    const venue = {
+      ...this.props.venues.venues.find(
+        el => el._id === this.props.match.params.id
+      )
+    };
+    const { pastry, gastro, cold } = { ...venue.options };
     return (
       <div>
         <div className='backButton'>
           <Link to={'/'}>
-            <Button >Назад</Button>
+            <Button>Назад</Button>
           </Link>
         </div>
         <div className='venueContainer'>
           <div className='venueInfo'>
-            <h5>Кулинарная студия {this.state.venue.name}</h5>
-            <h6>О нас</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, facere recusandae numquam dolorum iusto, praesentium error est inventore optio repellat expedita obcaecati, qui officia. Magni consectetur possimus accusamus voluptate quisquam.</p>
-            <div>
-              <p> </p>
-              <p>Контакты</p>
-              <p>Адрес</p>
-              <p>Телефон</p>
-              <p>email</p>
+            <h5>Кулинарная студия {venue.name}</h5>
+            <h6>
+              <img
+                style={{ width: '600px', marginLeft: '50px' }}
+                src={venue.img}
+                alt=''
+              />
+            </h6>
+            <div className='venueDatePicker'>
+              <DatePicker
+                onChange={date => {
+                  this.setState({ date: date });
+                  console.log(this.state.date);
+                }}
+                value='Выберите дату что бы увидеть доступное время'
+                options={{
+                  autoClose: true,
+                  format: 'mmmm dd, yyyy'
+                }}
+              />
+
+              <Modal
+                trigger={
+                  <Button className='backButton'>Показать расписание</Button>
+                }
+              >
+                {this.state.venue.time &&
+                  this.state.venue.time.map((hour, i) => (
+                    <Button
+                      disabled={hour[0]}
+                      key={i}
+                      onClick={this.TimeQuery}
+                      name={hour[1]}
+                    >
+                      {hour[1]}
+                    </Button>
+                  ))}
+
+                <Button modal='close'>Забронировать</Button>
+              </Modal>
             </div>
           </div>
           <div className='venuePic'>
-            <div className='venueDatePicker'>
-
-              <DatePicker onChange={ (date) => {
-                  this.setState({ date: date })
-                  console.log(this.state.date);
-                }
-              }
-              value='Выберите дату что бы увидеть доступное время'
-              options={{
-                autoClose: true,
-                format: 'mmmm dd, yyyy'
-              }} />
-
-              <Modal trigger={<Button className='backButton'>Показать расписание</Button>}>
-                {this.state.venue.time && this.state.venue.time.map((hour, i) =>
-                  <Button disabled={hour[0]} key={i} onClick={this.TimeQuery} name={hour[1]}>{hour[1]}</Button>
-                )}
-
-                <Button modal="close">Забронировать</Button>
-
-              </Modal>
-
-            </div>
-            <img className='mainPic' src={this.state.venue.img} alt="" />
+            <Table
+              style={{ width: '500px', margin: 'auto', marginTop: '10px' }}
+            >
+              <tbody>
+                <tr>
+                  <th>Адрес</th>
+                  <td>{venue.address}</td>
+                </tr>
+                <tr>
+                  <th>Cайт</th>
+                  <td>{venue.web}</td>
+                </tr>
+                <tr>
+                  <th>Телефон</th>
+                  <td>{venue.phone}</td>
+                </tr>
+                <tr>
+                  <th>Часы работы</th>
+                  <td>
+                    с {venue.from} до {venue.to}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Вместимость</th>
+                  <td>до {venue.capacity} человек</td>
+                </tr>
+                <tr>
+                  <th>Цена за 1 час</th>
+                  <td>{venue.price},00 ₽</td>
+                </tr>
+                <tr>
+                  <th>Кондитерский цех</th>
+                  <td>
+                    <Checkbox checked={pastry} />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Кулинарный цех</th>
+                  <td>
+                    <Checkbox checked={gastro} />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Холодный цех</th>
+                  <td>
+                    <Checkbox checked={cold} />
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    venues: state.venues,
+    loading: state.loading,
+    error: state.error,
+    msg: state.msg,
+    status: state.status
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    // addVenue: data => dispatch(addVenueAC(data))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Venue);

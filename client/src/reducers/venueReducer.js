@@ -6,9 +6,10 @@ import {
   DELETE_VENUE, 
   VENUES_LOADING, 
   GET_VENUES_SUCCESS ,
-  CANCEL_FILTER
+  CANCEL_FILTER,
+  FILTER_OPTIONS
 } from '../actions/types'
-import { getResults } from '../helpers'
+import { compareOptions } from '../helpers'
 
 const initialState = {
   venues: [],
@@ -18,6 +19,21 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
+    case CANCEL_FILTER:
+      return {
+        ...state,
+        filtered: null
+      }
+    case FILTER_OPTIONS:
+      return {
+        ...state,
+        filtered: state.venues.filter(venue => {
+          console.log(1, venue.options)
+          console.log(2, action.payload.options)
+          console.log('result', compareOptions(action.payload.options, venue.options))
+          return compareOptions(action.payload.options, venue.options)
+        }) 
+      }
     case FILTER_PRICE:
       // const prevResults = getResults(state)
       return {
@@ -26,7 +42,6 @@ export default function(state = initialState, action) {
       }
     case FILTER_DATE:
       const reserved = action.payload.map(reserve => reserve.venueId)
-      console.log(reserved)
       return {
         ...state,
         filtered: state.venues.filter(venue => !reserved.includes(venue._id))

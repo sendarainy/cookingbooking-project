@@ -1,6 +1,7 @@
 .filterBar {
-  /* margin: 10px; */
+  margin: 10px;
   display: flex;
+  justify-content: center;
 }
 
 .button {
@@ -8,6 +9,7 @@
   margin-left: 10px;
   /* border-radius: 10px; */
   height: 35px;
+  /* background-color: #e57373; */
 }
 
 .date {

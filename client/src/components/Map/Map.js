@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, Point, Size } from 'google-maps-react';
 // import store from '../../store';
 import {
   getVenuesAC,
