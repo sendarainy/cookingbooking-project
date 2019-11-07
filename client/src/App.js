@@ -8,6 +8,7 @@ import Home from './components/pages/Home';
 import Header from './components/Header';
 import AddVenue from './components/Venue/AddVenue';
 import Venue from './components/Venue/Venue'
+import User from './components/pages/User/User'
 import { loadUser } from './actions/authActions';
 
 export default class App extends Component {
@@ -25,6 +26,7 @@ export default class App extends Component {
             <Route path='/' exact component={Home} />
             <Route path='/venues/new' component={AddVenue} />
             <Route path='/venues/:id' component={Venue}/>
+            <Route path='/users/:id' component={User} />
           </Switch>
         </Router>
       </Provider>
