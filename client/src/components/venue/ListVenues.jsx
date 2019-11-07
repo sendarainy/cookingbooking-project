@@ -21,6 +21,8 @@ class ListVenues extends Component {
   showResults = () => {
     return this.props.filtered || this.props.venues
   }
+
+  
   render() {
     return(
       <Fragment>

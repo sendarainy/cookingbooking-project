@@ -11,6 +11,7 @@ class BookingModal extends Component {
   }
   toggleModal = (e) => {
     if (!this.props.user) {
+      return alert('Пожалуйста, залогиньтесь!')
     }
     this.setState({ isOpen: !this.state.isOpen });
   }
@@ -25,6 +26,7 @@ class BookingModal extends Component {
       "Content-Type": "application/json"
     }
     await axios.post('api/reservations/new', body, headers)
+    
   }
   handleDateChange = date => {
     this.setState({
