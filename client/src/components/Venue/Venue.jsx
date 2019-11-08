@@ -42,7 +42,7 @@ class Venue extends Component {
                 alt=''
               />
             </h6>
-            <div className='venueDatePicker'>
+            {/* <div className='venueDatePicker'>
               <DatePicker
                 onChange={date => {
                   this.setState({ date: date });
@@ -74,7 +74,7 @@ class Venue extends Component {
 
                 <Button modal='close'>Забронировать</Button>
               </Modal>
-            </div>
+            </div> */}
           </div>
           <div className='venuePic'>
             <Table

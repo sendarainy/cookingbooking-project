@@ -11,7 +11,7 @@ class Header extends Component {
   render() {
     return (
       <Navbar 
-      brand={<Link className='left brand-logo' to='/'>Cooking Booking</Link>}
+      brand={<Link className='left brand-logo' to='/' style={{marginLeft: '10px'}}>Cooking Booking</Link>}
       alignLinks='right'>
         {!this.props.user && <LoginModal />}
         {!this.props.user && <SignupModal />}

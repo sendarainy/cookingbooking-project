@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Table, Button } from 'react-materialize'
+import { Col, Table, Button, Icon } from 'react-materialize'
 import { Link } from 'react-router-dom'
 
 export default class Bookings extends Component {
@@ -25,11 +25,12 @@ export default class Bookings extends Component {
               <td>{booking.price / booking.attenders + ' .р'}</td>
               <td>{booking.price - (booking.price / booking.attenders) + ' .р'}</td>
               <td><Button
+              icon={<Icon>close</Icon>}
               onClick={() => this.props.bookings.splice(i, 1)} 
-              className='red lighten-1' 
+              className='button red lighten-2' 
               tooltip='Отменить бронь' 
               tooltipOptions={{ position: 'right'}}
-              >X</Button></td>
+              ></Button></td>
             </tr>
             )}
           </tbody>
