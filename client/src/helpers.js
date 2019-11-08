@@ -6,6 +6,12 @@ export function getResults(state) {
 //   return arr1.some((el, i) => el & arr2[i])
 // }
 
+export function findName(arr, id) {
+  return arr.find(el => {
+    // console.log(el._id, [id]);
+    return el._id === id});
+}
+
 export function compareArrays(tmplt, arr) {
   let result = 1
   tmplt.forEach((el, i) => {

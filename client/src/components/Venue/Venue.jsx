@@ -43,7 +43,7 @@ class Venue extends Component {
               />
             </h6>
             <div className='venueDatePicker'>
-              <DatePicker
+              {/* <DatePicker
                 onChange={date => {
                   this.setState({ date: date });
                   console.log(this.state.date);
@@ -53,9 +53,9 @@ class Venue extends Component {
                   autoClose: true,
                   format: 'mmmm dd, yyyy'
                 }}
-              />
+              /> */}
 
-              <Modal
+              {/* <Modal
                 trigger={
                   <Button className='backButton'>Показать расписание</Button>
                 }
@@ -73,7 +73,7 @@ class Venue extends Component {
                   ))}
 
                 <Button modal='close'>Забронировать</Button>
-              </Modal>
+              </Modal> */}
             </div>
           </div>
           <div className='venuePic'>
