@@ -53,7 +53,7 @@ class ListVenues extends Component {
                 </div>
                 <div className='picContainer'>
                   <img
-                    className='venuePic'
+                    className='venuePicSmall'
                     src={venue.img}
                     alt='картинка будет здесь'
                   />

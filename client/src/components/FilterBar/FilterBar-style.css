@@ -4,8 +4,12 @@
   justify-content: center;
 }
 
+.checkContainer {
+  margin-bottom: 0px !important;
+}
+
 .button {
-  margin-top: 14px;
+  margin-top: 24px;
   margin-left: 10px;
   /* border-radius: 10px; */
   height: 35px;
