@@ -74,13 +74,16 @@ class FilterBar extends Component {
     return (
       <Row className='container'>
       <div className='filterBar'>
-        <Col s={2} className='myDate'>
+        <div>Выберите дату:</div>
+        <Col className='myDate'>
         <Flatpickr style={{ borderBottom: '1px solid #9e9e9e'}}
+              label='Выберите'
               data-enable-time 
               defaultValue={this.state.date}
               onChange={(date) => this.handleDateChange(date)}
         />
         </Col>
+        <div style={{}}>Выберите дату:</div>
         <Select name='price' onChange={this.handleChangePrice}>
           <option value=''></option>
           <option value="1000">До 1000 р.</option>
@@ -118,7 +121,7 @@ class FilterBar extends Component {
          </div>
         <Button icon={<Icon>close</Icon>}onClick={this.dropFilter} className='button red lighten-2' tooltip='Сбросить фильтр'></Button>
       </div>
-      </Row>
+    </Row>
     )
   }
 }
