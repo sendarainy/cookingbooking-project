@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import './FilterBar-style.css'
-import { Button, TimePicker, Select, DatePicker, Checkbox, Icon } from 'react-materialize'
+import Flatpickr from 'react-flatpickr'
+import { Button, Row, Col, Select, DatePicker, Checkbox, Icon } from 'react-materialize'
 import { filterReservations } from '../../actions/reservationActions'
 import { filterVenues, cancelFilter } from '../../actions/venueActions'
 import { connect } from 'react-redux'
+
 class FilterBar extends Component {
   state = {
-    date: {
-      date: null,
-      time: null
-    },
+    date: null,
     options: {
       pastry: false,
       gastro: false,
@@ -27,8 +26,7 @@ class FilterBar extends Component {
         [e.target.className]: !this.state.options[e.target.className]
       }
     });
-    console.log(this.state.options)
-    console.log(Object.values(this.state.options))
+  
     const { options } = this.state
     this.props.filterVenues({ options })
 
@@ -47,47 +45,24 @@ class FilterBar extends Component {
   }
 
   filterOnDateFilled = () => {
-    if (this.state.date.date && this.state.date.time) {
-      this.props.filterReservations(this.state.date.date)
+    if (this.state.date) {
+      this.props.filterReservations(this.state.date)
     }
   }
-  handleChangeDate = (date) => {
+  handleDateChange = date => {
     this.setState({
-      ...this.state,
-      date: {
-        date: date,
-        time: this.state.date.time
-      }
-    })
-    this.filterOnDateFilled()
-  }
-  handleChangeTime = (time) => {
-    this.setState({ 
-      ...this.state, 
-      date: {
-        date: this.state.date.date,
-        time: time
-      }
+      date: date[0]
     });
     this.filterOnDateFilled()
-  }
+  };
   render() {
     return (
       <div className='filterBar'>
-        <DatePicker className='date' value='Дата'
-        options={{
-          autoClose: true,
-          format: 'mmmm dd, yyyy'
-        }}
-        onChange={(date) => this.handleChangeDate(date)}
-        />
-        <TimePicker className='time' value='Время'
-        onChange={(time) => this.handleChangeTime(time)}
-        options={{
-          twelveHour: false,
-        }}
-        />
-        
+        <Flatpickr
+              data-enable-time
+              value='Дата'
+              onChange={(date) => this.handleDateChange(date)}
+        /> 
         <Select name='price' onChange={this.handleChangePrice}>
           <option value='' disabled>Цена</option>
           <option value="1000">До 1000</option>
