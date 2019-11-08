@@ -28,9 +28,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         filtered: state.venues.filter(venue => {
-          console.log(1, venue.options)
-          console.log(2, action.payload.options)
-          console.log('result', compareOptions(action.payload.options, venue.options))
           return compareOptions(action.payload.options, venue.options)
         }) 
       }

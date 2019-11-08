@@ -24,7 +24,9 @@
   border-radius: 10px;
   background: white;
 }
-
+.myDate {
+  margin-top: 15px;
+}
 .input-field {
   margin-left: 10px;
 }
