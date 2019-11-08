@@ -32,7 +32,7 @@ class User extends Component {
     return (
       <Col s={12}>
         <h4>Вы владелец студии?</h4>
-        <Button>Добавить</Button>
+        <Link to='../venues/new'><Button>Добавить</Button></Link>
       </Col>
     )
   }

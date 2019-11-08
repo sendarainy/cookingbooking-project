@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import './FilterBar-style.css'
-import { Button, TimePicker, Select, DatePicker, Checkbox, Icon } from 'react-materialize'
+import Flatpickr from 'react-flatpickr'
+import { Button, Row, Col, Select, DatePicker, Checkbox, Icon } from 'react-materialize'
 import { filterReservations } from '../../actions/reservationActions'
 import { filterVenues, cancelFilter } from '../../actions/venueActions'
 import { connect } from 'react-redux'
+
 class FilterBar extends Component {
   state = {
-    date: {
-      date: null,
-      time: null
-    },
+    date: null,
     options: {
       pastry: false,
       gastro: false,
@@ -19,7 +18,22 @@ class FilterBar extends Component {
     hours: null,
     price: null
   }
-
+  dropFilter = () => {
+    this.setState(
+      {
+        date: null,
+        options: {
+          pastry: false,
+          gastro: false,
+          cold: false
+        },
+        parsedDate: null,
+        hours: null,
+        price: null
+      }
+    )
+    this.props.cancelFilter()
+  }
   onChangeOptions = async e => {
     await this.setState({
       options: {
@@ -27,8 +41,7 @@ class FilterBar extends Component {
         [e.target.className]: !this.state.options[e.target.className]
       }
     });
-    console.log(this.state.options)
-    console.log(Object.values(this.state.options))
+  
     const { options } = this.state
     this.props.filterVenues({ options })
 
@@ -47,59 +60,39 @@ class FilterBar extends Component {
   }
 
   filterOnDateFilled = () => {
-    if (this.state.date.date && this.state.date.time) {
-      this.props.filterReservations(this.state.date.date)
+    if (this.state.date) {
+      this.props.filterReservations(this.state.date)
     }
   }
-  handleChangeDate = (date) => {
+  handleDateChange = date => {
     this.setState({
-      ...this.state,
-      date: {
-        date: date,
-        time: this.state.date.time
-      }
-    })
-    this.filterOnDateFilled()
-  }
-  handleChangeTime = (time) => {
-    this.setState({ 
-      ...this.state, 
-      date: {
-        date: this.state.date.date,
-        time: time
-      }
+      date: date[0]
     });
     this.filterOnDateFilled()
-  }
+  };
   render() {
     return (
+      <Row className='container'>
       <div className='filterBar'>
-        <DatePicker className='date' value='Дата'
-        options={{
-          autoClose: true,
-          format: 'mmmm dd, yyyy'
-        }}
-        onChange={(date) => this.handleChangeDate(date)}
+        <Col s={2} className='myDate'>
+        <Flatpickr style={{ borderBottom: '1px solid #9e9e9e'}}
+              data-enable-time 
+              defaultValue={this.state.date}
+              onChange={(date) => this.handleDateChange(date)}
         />
-        <TimePicker className='time' value='Время'
-        onChange={(time) => this.handleChangeTime(time)}
-        options={{
-          twelveHour: false,
-        }}
-        />
-        
+        </Col>
         <Select name='price' onChange={this.handleChangePrice}>
-          <option value='' disabled>Цена</option>
-          <option value="1000">До 1000</option>
-          <option value="2000">До 2000</option>
-          <option value="3000">До 3000</option>
+          <option value=''></option>
+          <option value="1000">До 1000 р.</option>
+          <option value="2000">До 2000 р.</option>
+          <option value="3000">До 3000 р.</option>
         </Select>
         <div className='checkContainer' style={{ display: 'flex', alignItems: 'center'}}>
            <div style={{marginLeft: '10px'}}>
              <Checkbox
                className='pastry'
                onChange={this.onChangeOptions}
-               value='false'
+               value={this.state.pastry}
                label='Кондитерский цех'
                checked={this.state.options.pastry}
              />
@@ -108,7 +101,7 @@ class FilterBar extends Component {
              <Checkbox
                className='gastro'
                onChange={this.onChangeOptions}
-               value='false'
+               value={this.state.gastro}
                label='Кулинарный цех'
                checked={this.state.options.gastro}
              />
@@ -117,14 +110,15 @@ class FilterBar extends Component {
              <Checkbox
                className='cold'
                onChange={this.onChangeOptions}
-               value='false'
+               value={this.state.cold}
                label='Холодный цех'
                checked={this.state.options.cold}
              />
            </div>
          </div>
-        <Button icon={<Icon>close</Icon>}onClick={this.props.cancelFilter} className='button red lighten-2' tooltip='Сбросить фильтр'></Button>
+        <Button icon={<Icon>close</Icon>}onClick={this.dropFilter} className='button red lighten-2' tooltip='Сбросить фильтр'></Button>
       </div>
+      </Row>
     )
   }
 }
