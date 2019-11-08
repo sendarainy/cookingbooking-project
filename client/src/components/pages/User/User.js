@@ -3,16 +3,43 @@ import { Row, Container, Col, Table, Button } from 'react-materialize'
 import Bookings from './Bookings'
 import UserVenues from './UserVenues'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getVenues } from '../../../actions/venueActions';
+import { getReservations } from '../../../actions/reservationActions';
+import axios from 'axios'
+import { findName } from '../../../helpers'
 
 class User extends Component {
   state = {
-    bookings: [
-      { _id: '123', venueName: 'My place', venueId: 'asdasd', date: new Date(), attenders: 4, price: 1500 },
-      { _id: '1234', venueName: 'My place 2', venueId: 'asdasd', date: new Date(), attenders: 2, price: 1200 },
-      { _id: '1235', venueName: 'My place 3', venueId: 'asdasd', date: new Date(), attenders: 5, price: 1900 },
+    // bookings: [
+    //   { _id: '123', venueName: 'My place', venueId: 'asdasd', date: new Date(), attenders: 4, price: 1500 },
+    //   { _id: '1234', venueName: 'My place 2', venueId: 'asdasd', date: new Date(), attenders: 2, price: 1200 },
+    //   { _id: '1235', venueName: 'My place 3', venueId: 'asdasd', date: new Date(), attenders: 5, price: 1900 },
 
-    ],
+    // ],
+    bookings: [],
     venues: null
+  }
+  componentDidMount = async () => {
+    this.props.getVenues();
+    this.props.getReservations();
+    const user = this.props.user
+    const reservations = this.props.reservations.filter(item => item.userId === user._id)
+    const venues = this.props.venues.filter(venue => {
+      return reservations.some(res => res.venueId === venue._id)
+    })
+    const bookings = reservations.map(el => {
+      return {
+        ...el,
+        date: new Date(el.date),
+        venue: findName(venues, el.venueId),
+        attenders: Math.floor(Math.random() * (5-2) + 2),
+      }
+    })
+    this.setState({
+      bookings
+    })
+
   }
   showBookings() {
     if (this.state.bookings) {
@@ -50,4 +77,10 @@ class User extends Component {
   }
 }
 
-export default User;
+const mapStateToProps = (state) => ({
+  reservations: state.reservations.reservations,
+  user: state.auth.user,
+  venues: state.venues.venues
+})
+
+export default connect(mapStateToProps, { getVenues, getReservations })(User);

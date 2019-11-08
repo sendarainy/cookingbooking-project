@@ -42,8 +42,8 @@ class Venue extends Component {
                 alt=''
               />
             </h6>
-            {/* <div className='venueDatePicker'>
-              <DatePicker
+            <div className='venueDatePicker'>
+              {/* <DatePicker
                 onChange={date => {
                   this.setState({ date: date });
                   console.log(this.state.date);
@@ -53,9 +53,9 @@ class Venue extends Component {
                   autoClose: true,
                   format: 'mmmm dd, yyyy'
                 }}
-              />
+              /> */}
 
-              <Modal
+              {/* <Modal
                 trigger={
                   <Button className='backButton'>Показать расписание</Button>
                 }
@@ -75,6 +75,8 @@ class Venue extends Component {
                 <Button modal='close'>Забронировать</Button>
               </Modal>
             </div> */}
+           
+            </div>
           </div>
           <div className='venuePic'>
             <Table
