@@ -8,7 +8,8 @@ import { getResults } from '../helpers'
 
 const initialState = {
   reservations: [],
-  filtered: null
+  filtered: null,
+  selectedDate: null
 }
 
 export default function(state = initialState, action) {
@@ -19,8 +20,10 @@ export default function(state = initialState, action) {
         reservations: action.payload
       }
     case FILTER_RESERVATIONS:
+      // console.log(typeof action.payload)
       return {
         ...state,
+        selectedDate: action.payload,
         filtered: state.reservations.filter(res => {
           return new Date(res.date).toDateString() === action.payload.toDateString()
           // console.log(action.payload.toDateString())

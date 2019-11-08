@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Modal, Button, Icon } from 'react-materialize'
 import Flatpickr from 'react-flatpickr'
+import { connect } from 'react-redux'
 import 'flatpickr/dist/themes/material_green.css'
 import axios from 'axios'
 
@@ -9,6 +10,7 @@ class BookingModal extends Component {
     date: null,
     isOpen: false
   };
+  
   toggleModal = e => {
     if (!this.props.user) {
       return alert('Пожалуйста, залогиньтесь!');
@@ -26,6 +28,7 @@ class BookingModal extends Component {
       'Content-Type': 'application/json'
     };
     await axios.post('api/reservations/new', body, headers);
+    this.toggleModal()
   };
   handleDateChange = date => {
     this.setState({
@@ -45,7 +48,7 @@ class BookingModal extends Component {
           <form onSubmit={this.handleSubmit}>
             <Flatpickr
               data-enable-time
-              value={this.state.date}
+              value={this.props.selectedDate}
               onChange={this.handleDateChange}
             />
             <Button>Забронировать</Button>
@@ -55,5 +58,7 @@ class BookingModal extends Component {
     );
   }
 }
-
-export default BookingModal;
+const mapStateToProps = (state) => ({
+  selectedDate: state.reservations.selectedDate
+})
+export default connect(mapStateToProps)(BookingModal);
