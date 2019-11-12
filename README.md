@@ -1,4 +1,1 @@
-# elbrus-project-final
-
-backend port - 5000
-frontend port - 3000
+Сайт, который поможет вам подобрать кулинарную студию в Москве.
